@@ -2,6 +2,7 @@ import builtins from 'builtin-modules/static'
 import typescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
 import json from '@rollup/plugin-json'
+import copy from 'rollup-plugin-copy'
 
 import pkg from './package.json'
 
@@ -34,6 +35,10 @@ export default {
       rollupCommonJSResolveHack: false,
       clean: true,
     }),
-    // uglify(),
+    copy({
+      targets: [
+        { src: ['src/templates', 'src/images', 'src/css'], dest: 'lib/src' },
+      ]
+    })
   ],
 }
