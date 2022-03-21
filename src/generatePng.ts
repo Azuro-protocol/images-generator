@@ -41,11 +41,11 @@ const matchType = {
 
 const generatePng = async ({type, sport, league, team1, team2, date, betAmount, outcome, betOdds, currentOdds}: GeneratePng) => {
   try {
-    let html = fs.readFileSync(__dirname + '/templates/card.html', 'utf8');
-    let css = fs.readFileSync(__dirname + '/css/index.css', 'utf8');
-    const shadow = getImg('/images/shadow.png')
-    const logo = getImg('/images/logo.png')
-    const separator = getImg('/images/separator.png')
+    let html = fs.readFileSync(__dirname + '/src/templates/card.html', 'utf8');
+    let css = fs.readFileSync(__dirname + '/src/css/index.css', 'utf8');
+    const shadow = getImg('/src/images/shadow.png')
+    const logo = getImg('/src/images/logo.png')
+    const separator = getImg('/src/images/separator.png')
     
     const team1Img = await downloadImg(team1.img);
     const team2Img = await downloadImg(team2.img);
