@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
       "target": "es5",
+      "moduleResolution": "node",
       "typeRoots": [
           "./src/types",
           "./node_modules/@types"
@@ -14,7 +15,6 @@
       ],
       "declaration": true,
       "outDir": "lib/esm",
-      "jsx": "react",
       "esModuleInterop": true,
       "strict": true
   },
