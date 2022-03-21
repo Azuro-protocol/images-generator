@@ -1,13 +1,10 @@
 {
-  "name": "azuro-nft-generator",
-  "version": "1.0.0",
+  "name": "@azuro-protocol/nft-image-generator",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "module": "dist/index.es.js",
   "types": "./index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
   "scripts": {
     "build": "rimraf ./dist && rimraf ./lib && rollup -c --compact",
     "dev": "rollup -cw"
