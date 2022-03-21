@@ -1,6 +1,11 @@
 ### Passed object type
 
 ```typescript
+type Team = {
+  img: string
+  name: string
+}
+
 type GeneratePng = {
   type: 'match' | 'claim' | 'claimed'
   sport: string
