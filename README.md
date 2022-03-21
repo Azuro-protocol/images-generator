@@ -1,3 +1,23 @@
+### Passed object type
+
+```typescript
+type GeneratePng = {
+  type: 'match' | 'claim' | 'claimed'
+  sport: string
+  league: string
+  team1: Team
+  team2: Team
+  date: string
+  betAmount: string
+  outcome: string
+  betOdds: string
+  currentOdds: string
+}
+```
+
+
+### Usage
+
 ```typescript
 import {generatePng} from '@azuro-protocol/nft-image-generator';
 
