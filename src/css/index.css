@@ -1,0 +1,243 @@
+html {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+html, body {
+  margin: 0;
+  width: fit-content;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-1 {
+  flex: 1 1 0;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-none {
+  flex: none;
+}
+
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-baseline {
+  align-items: baseline;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.self-auto {
+  align-self: auto;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.self-stretch {
+  align-self: stretch;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-col-reverse {
+  flex-direction: column-reverse;
+}
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-600 {
+  font-weight: 600;
+}
+
+.text-400 {
+  font-weight: 400;
+}
+
+.card {
+  width: 510px;
+  position: relative;
+  padding: 24px 16px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  background: #FFFFFF;
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 40px;
+}
+
+.shadow {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+}
+
+.sport {
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.league {
+  font-size: 18px;
+  line-height: 27px
+}
+
+.sport::before, .sport::after {
+  content: '';
+  display: block;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  margin: 0 8px;
+  background: #000000;
+}
+
+.teams {
+  margin: 24px 0 16px;
+}
+
+.team {
+  width: 100%;
+  background: #FAFAFA;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.date {
+  opacity: 0.6;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.game {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.table {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 16px;
+  background: linear-gradient(180deg, rgba(250, 250, 250, 0) 0%, #FAFAFA 100%);
+}
+
+.table__head {
+  font-size: 14px;
+  line-height: 21px;
+  padding: 8px;
+  text-transform: capitalize;
+}
+
+.table__content {
+  padding: 24px
+}
+
+.table__item {
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 4px;
+}
+
+.table__item:first-child {
+  margin-top: 0;
+}
+
+.table_match {
+  border-color: #007FFF;
+}
+
+.table_match .table__head {
+  color: #007FFF;
+  background: #E0EEFE;
+}
+
+.table_claim {
+  border-color: #FFA000;
+}
+
+.table_claim .table__head {
+  color: #FFA000;
+  background: #FFF8E1;
+}
+
+.table_claimed {
+  border-color: #4CAF50;
+}
+
+.table_claimed .table__head {
+  color: #4CAF50;
+  background: #E8F5E9;
+}
