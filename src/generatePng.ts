@@ -33,7 +33,7 @@ type GeneratePng = {
   currentOdds: string
 }
 
-const types = {
+const matchType = {
   'match': 'Waiting for match',
   'claim': 'Waiting for claim',
   'claimed': 'Claimed',
@@ -59,7 +59,7 @@ const generatePng = async ({type, sport, league, team1, team2, date, betAmount, 
     .replace('{date}', date)
     .replace('{game}', `${team1.name} - ${team2.name}`)
     .replace('{tableType}', type)
-    .replace('{tableHead}', types[type])
+    .replace('{tableHead}', matchType[type])
     .replace('{betAmount}', betAmount)
     .replace('{outcome}', outcome)
     .replace('{betOdds}', betOdds)
