@@ -1,5 +1,5 @@
 ```typescript
-import 
+import {generatePng} from 'azuro-nft-generator';
 
 generatePng({
   type: 'match',
