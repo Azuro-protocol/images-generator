@@ -1,6 +1,5 @@
 import fs, {readFileSync} from 'fs';
 import puppeteer from 'puppeteer';
-const locateChrome = require('locate-chrome');
 import axios from 'axios';
 
 const downloadImg = async (url: string) => {
@@ -20,8 +19,18 @@ type Team = {
   name: string
 }
 
+const matchType = {
+  'match': 'Waiting for match',
+  'claim': 'Waiting for claim',
+  'claimed': 'Claimed',
+  'lose': 'Lose',
+  'canceled': 'Canceled match'
+} as const
+
+type MatchType = keyof typeof matchType
+
 type GeneratePng = {
-  type: 'match' | 'claim' | 'claimed'
+  type: MatchType
   sport: string
   league: string
   team1: Team
@@ -32,12 +41,6 @@ type GeneratePng = {
   betOdds: string
   currentOdds: string
 }
-
-const matchType = {
-  'match': 'Waiting for match',
-  'claim': 'Waiting for claim',
-  'claimed': 'Claimed',
-} as const
 
 const generatePng = async ({type, sport, league, team1, team2, date, betAmount, outcome, betOdds, currentOdds}: GeneratePng) => {
   try {
@@ -68,8 +71,15 @@ const generatePng = async ({type, sport, league, team1, team2, date, betAmount, 
     .replace('{shadow}', shadow)
     .replace('{logo}', logo)
 
-    const executablePath: any = await new Promise(resolve => locateChrome((arg: any) => resolve(arg)));
-    const browser = await puppeteer.launch({executablePath});
+    const browser = await puppeteer.launch({
+      headless: true,
+      devtools: false,
+      args: [
+        '--no-sandbox',
+        '--disable-gpu',
+        '--disable-accelerated-video-decode',
+      ],
+    });
     const page = await browser.newPage();
     page.setViewport({
       width: 510,

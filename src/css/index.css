@@ -241,3 +241,21 @@ html, body {
   color: #4CAF50;
   background: #E8F5E9;
 }
+
+.table_lose {
+  border-color: #A3A3A3;
+}
+
+.table_lose .table__head {
+  color: #A3A3A3;
+  background: rgba(163, 163, 163, 0.12);
+}
+
+.table_canceled {
+  border-color: #FF1717;
+}
+
+.table_canceled .table__head {
+  color: #FF1717;
+  background: rgba(255, 23, 23, 0.12);
+}
