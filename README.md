@@ -7,7 +7,7 @@ type Team = {
 }
 
 type GeneratePng = {
-  type: 'match' | 'claim' | 'claimed'
+  type: 'match' | 'claim' | 'claimed' | 'lose' | 'canceled'
   sport: string
   league: string
   team1: Team
