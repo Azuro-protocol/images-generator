@@ -1,6 +1,9 @@
+.idea
+.DS_Store
+
 # dependencies
 /node_modules
 
-# build 
-/lib
-/dist
+# build
+lib/
+dist/

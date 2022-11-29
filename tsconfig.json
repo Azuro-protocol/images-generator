@@ -1,27 +1,25 @@
 {
   "compilerOptions": {
-      "target": "es5",
-      "moduleResolution": "node",
-      "typeRoots": [
-          "./src/types",
-          "./node_modules/@types"
-      ],
-      "module": "esnext",
-      "lib": [
-          "es2017",
-          "es7",
-          "es6",
-          "dom"
-      ],
-      "declaration": true,
-      "outDir": "lib/esm",
-      "esModuleInterop": true,
-      "strict": true
+    "target": "es5",
+    "moduleResolution": "node",
+    "module": "esnext",
+    "lib": [
+      "es2017",
+      "es7",
+      "es6",
+      "dom"
+    ],
+    "outDir": "lib/esm",
+    "declaration": true,
+    "esModuleInterop": true,
+    "strict": true
   },
-  "include": ["./src", "index.ts"],
+  "include": [
+    "./packages"
+  ],
   "exclude": [
-      "node_modules",
-      "lib",
-      "dist"
+    "node_modules",
+    "lib",
+    "dist"
   ]
 }
