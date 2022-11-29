@@ -1,4 +1,4 @@
-### Passed object type
+### Types Declaration
 
 ```typescript
 type Team = {
@@ -6,7 +6,7 @@ type Team = {
   name: string
 }
 
-type GeneratePng = {
+type Props = {
   type: 'match' | 'claim' | 'claimed' | 'lose' | 'canceled'
   sport: string
   league: string
@@ -24,9 +24,9 @@ type GeneratePng = {
 ### Usage
 
 ```typescript
-import {generatePng} from '@azuro-protocol/nft-image-generator';
+import generateImage, { Props } from '@azuro-protocol/nft-image-generator';
 
-generatePng({
+const props: Props = {
   type: 'match',
   sport: 'soccer',
   league: 'Leinster Senior League Senior Division',
@@ -43,7 +43,10 @@ generatePng({
   outcome: 'Total Under(2.5)',
   betOdds: '2.88',
   currentOdds: '1.88'
-}).then(buffer => {
-  console.log(buffer);
+}
+
+generateImage({
+  output: './dist',
+  props,
 })
 ```

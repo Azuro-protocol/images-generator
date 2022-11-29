@@ -1,6 +1,6 @@
 {
-  "name": "@azuro-protocol/nft-image-generator",
-  "version": "2.0.0",
+  "name": "@azuro-protocol/<package_name>",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "module": "dist/index.es.js",
   "types": "./index.d.ts",

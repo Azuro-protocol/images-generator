@@ -11,12 +11,10 @@
     ],
     "outDir": "lib/esm",
     "declaration": true,
+    "declarationDir": ".",
     "esModuleInterop": true,
     "strict": true
   },
-  "include": [
-    "./packages"
-  ],
   "exclude": [
     "node_modules",
     "lib",

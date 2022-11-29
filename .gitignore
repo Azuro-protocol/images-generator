@@ -7,3 +7,5 @@
 # build
 lib/
 dist/
+/packages/**/index.d.ts
+test-image.*

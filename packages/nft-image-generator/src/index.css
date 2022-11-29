@@ -175,6 +175,13 @@ html, body {
   padding: 16px;
 }
 
+.team img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto;
+}
+
 .date {
   opacity: 0.6;
   font-size: 16px;
