@@ -15,7 +15,8 @@
     "dev": "rollup -c ../../rollup.config.js -w",
     "build": "rimraf ./dist && rimraf ./lib && rollup -c ../../rollup.config.js --compact",
     "test": "node ./test",
-    "build-and-test": "npm run build && npm run test"
+    "build-and-test": "npm run build && npm run test",
+    "prepublish": "npm run build"
   },
   "publishConfig": {
     "access": "public"
