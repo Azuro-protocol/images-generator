@@ -45,6 +45,14 @@ export default createGenerator<Props>({
 })
 ```
 
+
+## `createGenerator` options
+
+`type: 'png' | 'jpeg'`<br /><br />
+`headless: Boolean` - use true to see compiled html in browser<br /><br />
+`scaleFactor: 1 | 2` - use 2 if you need to generate x2 sized image
+
+
 ## Write tests
 
 Edit `test/index.js` file.
