@@ -45,6 +45,15 @@ export default createGenerator<Props>({
 })
 ```
 
+## Usefull options
+
+```
+createGenerator({
+  headless: false, // if you'd like to see how your html looks in browser
+  scaleFactor: 2, // if you need to generate 2x image
+})
+```
+
 ## Write tests
 
 Edit `test/index.js` file.
