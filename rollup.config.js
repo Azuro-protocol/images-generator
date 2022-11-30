@@ -46,7 +46,6 @@ export default [
         // ATTN https://github.com/ezolenko/rollup-plugin-typescript2#some-compiler-options-are-forced
         // >> declarationDir: Rollup's output.file or output.dir (unless useTsconfigDeclarationDir is true in the plugin options)
         // this allows to create only one .d.ts file in src/ folder of a package
-        // we use copy plugin for copying generated .d.ts file to dist/ and lib/ folders
         useTsconfigDeclarationDir: true,
       }),
       copy({
@@ -58,14 +57,6 @@ export default [
               getPkgPath('src/images'),
             ],
             dest: getPkgPath('lib'),
-          },
-          {
-            src: getPkgPath('src/index.d.ts'),
-            dest: getPkgPath('lib'),
-          },
-          {
-            src: getPkgPath('src/index.d.ts'),
-            dest: getPkgPath('dist'),
           },
         ]
       })
