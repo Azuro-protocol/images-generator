@@ -9,14 +9,14 @@ type PuppeteerInitialOptions = {
   args: string[]
 }
 
-type GeneratorImageProps<ImageProps> = {
+type GenerateImageProps<ImageProps> = {
   output?: string // output filepath
   filename?: string
   props: ImageProps
   modifyPuppeteerOptions?(options: PuppeteerInitialOptions): PuppeteerOptions
 }
 
-type GeneratorImageResult<T> = T extends { output: string } ? void : (string | Buffer)
+type GenerateImageResult<T> = T extends { output: string } ? void : (string | Buffer)
 
 type CreateGeneratorProps<ImageProps> = {
   headless?: boolean
@@ -30,7 +30,7 @@ type CreateGeneratorProps<ImageProps> = {
 export const createGenerator = <ImageProps extends {}>(props: CreateGeneratorProps<ImageProps>) => {
   const { headless = true, width, height, type, scaleFactor = 1, html: getHtml } = props
 
-  return async function generateImage<T extends GeneratorImageProps<ImageProps>>(props: T): Promise<GeneratorImageResult<T> | undefined> {
+  return async function generateImage<T extends GenerateImageProps<ImageProps>>(props: T): Promise<GenerateImageResult<T> | undefined> {
     const { output, filename = 'image', props: htmlProps, modifyPuppeteerOptions } = props
 
     const html = await getHtml(htmlProps)
