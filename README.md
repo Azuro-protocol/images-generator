@@ -45,14 +45,13 @@ export default createGenerator<Props>({
 })
 ```
 
-## Usefull options
 
-```
-createGenerator({
-  headless: false, // if you'd like to see how your html looks in browser
-  scaleFactor: 2, // if you need to generate 2x image
-})
-```
+## `createGenerator` options
+
+`type: 'png' | 'jpeg'`<br /><br />
+`headless: Boolean` - use true to see compiled html in browser<br /><br />
+`scaleFactor: 1 | 2` - use 2 if you need to generate x2 sized image
+
 
 ## Write tests
 
