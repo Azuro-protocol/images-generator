@@ -1,7 +1,7 @@
 {
   "name": "@azuro-protocol/bet-og-image-generator",
+  "version": "1.0.10",
   "description": "Opengraph image generator. For bets",
-  "version": "1.0.9",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Azuro-protocol/images-generator.git"
