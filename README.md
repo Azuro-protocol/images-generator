@@ -1,3 +1,5 @@
+> This readme is for Developers only.
+
 ## How to add a new package
 
 1. Copy `packages/_template` to `packages/` and rename it to your package name.

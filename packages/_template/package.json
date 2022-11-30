@@ -1,5 +1,10 @@
 {
   "name": "@azuro-protocol/<package_name>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azuro-protocol/images-generator.git"
+  },
+  "homepage": "https://github.com/Azuro-protocol/images-generator/packages/<package_name>#readme",
   "version": "0.1.0",
   "main": "lib/index.js",
   "module": "dist/index.es.js",

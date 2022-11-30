@@ -6,18 +6,24 @@ type Props = {
 }
 ```
 
-
 ### Usage
 
 ```typescript
-import generateImage, { Props } from '@azuro-protocol/<package_name>';
+import generateImage, { type Props } from '@azuro-protocol/<package_name>'
 
 const props: Props = {
   
 }
 
-generateImage({
-  output: './dist',
+// to get image buffer
+const buffer = await generateImage({
   props,
+})
+
+// to output file
+generateImage({
+  props,
+  output: './folder',
+  filename: 'image',
 })
 ```

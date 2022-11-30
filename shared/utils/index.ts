@@ -11,8 +11,8 @@ export const getFile = (filePath: string) => {
   return fs.readFileSync(getPath(filePath), 'utf8')
 }
 
-export const getBase64Image = (fileName: string) => {
-  return `data:image/png;base64,${fs.readFileSync(getPath(`./images/${fileName}`)).toString('base64')}`
+export const getBase64Image = (filePath: string) => {
+  return `data:image/png;base64,${fs.readFileSync(getPath(filePath)).toString('base64')}`
 }
 
 export const downloadImage = async (url: string) => {

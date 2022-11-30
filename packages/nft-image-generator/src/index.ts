@@ -39,9 +39,9 @@ export default createGenerator<Props>({
     let html = getFile('./index.html')
     let css = getFile('./index.css')
 
-    const shadow = getBase64Image('shadow.png')
-    const logo = getBase64Image('logo.png')
-    const separator = getBase64Image('separator.png')
+    const shadow = getBase64Image('./images/shadow.png')
+    const logo = getBase64Image('./images/logo.png')
+    const separator = getBase64Image('./images/separator.png')
 
     const team1Img = await downloadImage(team1.img)
     const team2Img = await downloadImage(team2.img)

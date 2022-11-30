@@ -1,6 +1,11 @@
 {
   "name": "@azuro-protocol/nft-image-generator",
   "version": "2.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azuro-protocol/images-generator.git"
+  },
+  "homepage": "https://github.com/Azuro-protocol/images-generator/packages/nft-image-generator#readme",
   "main": "lib/index.js",
   "module": "dist/index.es.js",
   "types": "./index.d.ts",
