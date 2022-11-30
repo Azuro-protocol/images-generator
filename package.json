@@ -7,13 +7,10 @@
     "npm": "=8.11.0"
   },
   "typings": "./index.d.ts",
-  "scripts": {
-    "build": "rimraf ./packages/*/dist && rimraf ./packages/*/lib && rollup -c --compact",
-    "dev": "rollup -cw"
-  },
   "dependencies": {
     "axios": "^0.26.1",
     "builtin-modules": "^3.2.0",
+    "dayjs": "^1.11.6",
     "node-html-to-image": "^3.2.4",
     "puppeteer": "^13.5.1"
   },

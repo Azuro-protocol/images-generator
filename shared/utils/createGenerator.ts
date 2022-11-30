@@ -4,6 +4,7 @@ import puppeteer from 'puppeteer'
 type Result<T> = T extends { output: string } ? void : (string | Buffer)
 
 type CreateGeneratorProps<ImageProps> = {
+  headless?: boolean
   width: number
   height: number
   type: 'png' | 'jpeg'
@@ -18,7 +19,7 @@ type GeneratorProps<ImageProps> = {
 }
 
 export const createGenerator = <ImageProps extends {}>(props: CreateGeneratorProps<ImageProps>) => {
-  const { width, height, type, html: getHtml } = props
+  const { headless = true, width, height, type, html: getHtml } = props
 
   return async <T extends GeneratorProps<ImageProps>>(props: T): Promise<Result<T> | undefined> => {
     const { output, filename = 'image', props: htmlProps } = props
@@ -26,21 +27,27 @@ export const createGenerator = <ImageProps extends {}>(props: CreateGeneratorPro
     const html = await getHtml(htmlProps)
 
     const browser = await puppeteer.launch({
-      headless: true,
+      headless,
       devtools: false,
       args: [
         '--no-sandbox',
         '--disable-gpu',
         '--disable-accelerated-video-decode',
+        // '--allow-file-access-from-files',
       ],
     })
 
     const page = await browser.newPage()
 
-    await page.setViewport({ width, height })
+    await page.setViewport({ width, height, deviceScaleFactor: 2 })
     await page.setContent(html)
 
     const content = await page.$('body')
+
+    // dont' change this condition!
+    if (headless === false) {
+      await new Promise(() => {})
+    }
 
     if (output) {
       const filePath = `${output.replace(/\/$/, '')}/${filename.replace(/\..+$/, '')}.${type}`

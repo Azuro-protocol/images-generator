@@ -16,9 +16,22 @@ export const getBase64Image = (filePath: string) => {
 }
 
 export const downloadImage = async (url: string) => {
-  const response = await axios.get(url,  { responseType: 'arraybuffer' })
-  const buffer = Buffer.from(response.data, 'utf-8')
-  return `data:image/png;base64,${buffer.toString('base64')}`
+  // empty pixel
+  let base64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=='
+
+  try {
+    const response = await axios.get(url,  { responseType: 'arraybuffer' })
+    const buffer = Buffer.from(response.data, 'utf-8')
+
+    base64 = buffer.toString('base64')
+  }
+  catch (err) {
+    console.error(err)
+    // empty pixel
+
+  }
+
+  return `data:image/png;base64,${base64}`
 }
 
 export { createGenerator } from './createGenerator'

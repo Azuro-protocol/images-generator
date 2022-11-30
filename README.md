@@ -1,16 +1,18 @@
 > This readme is for Developers only.
 
-## How to add a new package
+
+## Add new package
 
 1. Copy `packages/_template` to `packages/` and rename it to your package name.
-2. Change package "name" field in `package.json` file.
+2. Change package `"name"` and `"homepage"` fields in `package.json` file.
 3. Use `index.css` for CSS.
 4. Use `index.html` for HTML.
 5. Create `src/images` folder for images if required.
-6. Write test in `src/test/index.js` and run `npm run test` to check that generator doing what it should.
-7. Publish npm package `npm run publish`. For access to `@azuro-protocol` scope ask Pavel Ivanov or Stas Onatskiy.
 
-## Usage
+
+## Setup generator
+
+Edit `src/index.ts` file:
 
 ```typescript
 import { getFile, downloadImage, createGenerator } from '../../../shared/utils'
@@ -43,18 +45,16 @@ export default createGenerator<Props>({
 })
 ```
 
-## Test
+## Write tests
 
-Update `/test/index.js` file:
+Edit `test/index.js` file.
 
-```
-const generateImage = require('../lib').default
 
-generateImage({
-  output: './',
-  filename: 'test-image',
-  props: {
+## Dev, build and test
 
-  },
-})
-```
+There are `dev`, `build` and `test` scripts in package folder.
+
+
+## Publish
+
+Publish npm package with `npm run publish`. For access to `@azuro-protocol` scope ask Pavel Ivanov or Stas Onatskiy.

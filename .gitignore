@@ -2,10 +2,11 @@
 .DS_Store
 
 # dependencies
-/node_modules
+node_modules/
 
 # build
 lib/
 dist/
 /packages/**/index.d.ts
+/shared/**/*.d.ts
 test-image.*

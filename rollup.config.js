@@ -1,3 +1,4 @@
+import path from 'path'
 import builtins from 'builtin-modules/static'
 import typescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
@@ -7,10 +8,12 @@ import copy from 'rollup-plugin-copy'
 import pkg from './package.json'
 
 
-const buildConfig = (pkgName) => {
-  const getPkgPath = (path) => `./packages/${pkgName}/${path}`
+const pkgName = process.cwd().replace(/.+\//, '')
 
-  return {
+const getPkgPath = (filePath) => path.resolve(__dirname, `packages/${pkgName}/${filePath}`)
+
+export default [
+  {
     input: getPkgPath('src/index.ts'),
     output: [
       {
@@ -68,8 +71,4 @@ const buildConfig = (pkgName) => {
       })
     ],
   }
-}
-
-export default [
-  buildConfig('nft-image-generator'),
 ]
