@@ -11,6 +11,11 @@
   "types": "./index.d.ts",
   "license": "ISC",
   "scripts": {
+    "dev": "rollup -c ../../rollup.config.js -w",
+    "build": "rimraf ./dist && rimraf ./lib && rollup -c ../../rollup.config.js --compact",
     "test": "node ./test"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -14,5 +14,8 @@
     "dev": "rollup -cw",
     "build": "rimraf ./dist && rimraf ./lib && rollup -c --compact",
     "test": "node ./test"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
