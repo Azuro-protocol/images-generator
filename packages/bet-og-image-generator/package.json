@@ -1,7 +1,7 @@
 {
   "name": "@azuro-protocol/bet-og-image-generator",
   "description": "Opengraph image generator. For bets",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Azuro-protocol/images-generator.git"
@@ -14,7 +14,8 @@
   "scripts": {
     "dev": "rollup -c ../../rollup.config.js -w",
     "build": "rimraf ./dist && rimraf ./lib && rollup -c ../../rollup.config.js --compact",
-    "test": "node ./test"
+    "test": "node ./test",
+    "build-and-test": "npm run build && npm run test"
   },
   "publishConfig": {
     "access": "public"

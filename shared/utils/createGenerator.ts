@@ -8,8 +8,8 @@ type CreateGeneratorProps<ImageProps> = {
   width: number
   height: number
   type: 'png' | 'jpeg'
+  scaleFactor?: 1 | 2
   html: (props: ImageProps) => string | Promise<string>
-  output?: string // output folder
 }
 
 type GeneratorProps<ImageProps> = {
@@ -19,7 +19,7 @@ type GeneratorProps<ImageProps> = {
 }
 
 export const createGenerator = <ImageProps extends {}>(props: CreateGeneratorProps<ImageProps>) => {
-  const { headless = true, width, height, type, html: getHtml } = props
+  const { headless = true, width, height, type, scaleFactor = 1, html: getHtml } = props
 
   return async <T extends GeneratorProps<ImageProps>>(props: T): Promise<Result<T> | undefined> => {
     const { output, filename = 'image', props: htmlProps } = props
@@ -39,7 +39,7 @@ export const createGenerator = <ImageProps extends {}>(props: CreateGeneratorPro
 
     const page = await browser.newPage()
 
-    await page.setViewport({ width, height, deviceScaleFactor: 2 })
+    await page.setViewport({ width, height, deviceScaleFactor: scaleFactor })
     await page.setContent(html)
 
     const content = await page.$('body')

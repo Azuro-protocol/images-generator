@@ -13,7 +13,8 @@
   "scripts": {
     "dev": "rollup -cw",
     "build": "rimraf ./dist && rimraf ./lib && rollup -c --compact",
-    "test": "node ./test"
+    "test": "node ./test",
+    "build-and-test": "npm run build && npm run test"
   },
   "publishConfig": {
     "access": "public"

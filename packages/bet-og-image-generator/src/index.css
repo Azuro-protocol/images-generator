@@ -23,16 +23,16 @@ html, body {
 }
 
 .opengraph {
-  width: 1200px;
-  height: 630px;
-  padding: 60px 32px 0 46px;
+  width: 600px;
+  height: 315px;
+  padding: 30px 16px 0 23px;
   background-size: cover;
 }
 
 .logo {
   display: block;
-  height: 48px;
-  margin-bottom: 72px;
+  height: 24px;
+  margin-bottom: 36px;
 }
 
 .content {
@@ -42,31 +42,31 @@ html, body {
 }
 
 .title {
-  padding-right: 80px;
+  padding-right: 40px;
   color: #fff;
-  font-size: 60px;
-  line-height: 64px;
+  font-size: 30px;
+  line-height: 32px;
   font-weight: 700;
   font-family: 'Fivo Sans Modern', sans-serif;
 }
 
 .card {
   flex: none;
-  width: 560px;
-  padding: 24px 8px;
+  width: 280px;
+  padding: 12px 4px;
   font-weight: 500;
   background: #1F1F24;
   border: 1px solid #333338;
-  box-shadow: 0 9px 44px rgba(0, 0, 0, 0.2);
-  border-radius: 18px;
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.2);
+  border-radius: 9px;
 }
 
 .cardTitle {
-  margin-bottom: 22px;
+  margin-bottom: 11px;
   color: #8A8A98;
   text-align: center;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .teams {
@@ -79,45 +79,45 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 134px;
-  height: 134px;
+  width: 68px;
+  height: 68px;
   background: #27272B;
   border-radius: 50%;
 }
 
 .teamImage img {
   display: block;
-  width: 80px;
+  width: 40px;
 }
 
 .dates {
-  padding: 0 48px;
+  padding: 0 24px;
   text-align: center;
 }
 
 .date {
   color: #8A8A98;
-  font-size: 26px;
-  line-height: 28px;
+  font-size: 13px;
+  line-height: 14px;
 }
 
 .time {
   margin-top: 2px;
   color: #fff;
-  font-size: 26px;
-  line-height: 36px;
+  font-size: 13px;
+  line-height: 18px;
 }
 
 .teamNames {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 90px;
+  grid-gap: 44px;
 }
 
 .teamName {
-  padding: 24px 12px;
+  padding: 12px 6px;
   color: #fff;
   text-align: center;
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 14px;
+  line-height: 16px;
 }

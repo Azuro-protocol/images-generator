@@ -6,15 +6,15 @@ generateImage({
   props: {
     title: 'Decentralized betting is awesome!',
     game: {
-      country: 'International',
-      league: 'FIFA World Cup',
+      country: 'International Tournaments',
+      league: 'ESL Challenger League North America',
       participants: [
         {
-          name: 'Ecuador',
+          name: 'WINDINGO',
           image: 'https://content.bookmaker.xyz/avatars/provider-3/4757.png',
         },
         {
-          name: 'Senegal',
+          name: 'Los Grandes Academy',
           image: 'https://content.bookmaker.xyz/avatars/provider-3/4739.png',
         },
       ],

@@ -17,9 +17,10 @@ export type Props = {
 }
 
 export default createGenerator<Props>({
-  width: 1200,
-  height: 630,
+  width: 600,
+  height: 315,
   type: 'jpeg',
+  scaleFactor: 2,
   html: async (props: Props) => {
     const { title, game } = props
     const { country, league, participants, startsAt } = game
