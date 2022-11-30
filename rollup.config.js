@@ -1,38 +1,43 @@
 import path from 'path'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import builtins from 'builtin-modules/static'
+import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
 import json from '@rollup/plugin-json'
 import copy from 'rollup-plugin-copy'
 
-import pkg from './package.json'
 
-
-const pkgName = process.cwd().replace(/.+\//, '')
-
-const getPkgPath = (filePath) => path.resolve(__dirname, `packages/${pkgName}/${filePath}`)
+const TARGETS_TO_COPY = [
+  './src/index.html',
+  './src/index.css',
+  './src/images',
+]
 
 export default [
   {
-    input: getPkgPath('src/index.ts'),
+    input: './src/index.ts',
     output: [
       {
-        file: getPkgPath('lib/index.js'),
+        file: './lib/index.js',
         format: 'cjs',
         exports: 'named',
       },
       {
-        file: getPkgPath('dist/index.es.js'),
+        file: './dist/index.es.js',
         format: 'es',
         exports: 'named',
       },
     ],
     external: [
       ...builtins,
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
+      'puppeteer',
     ],
     plugins: [
+      nodeResolve({
+        rootDir: path.join(process.cwd(), '../../node_modules'), // repository root dir
+      }),
+      commonjs(),
       json(),
       babel({
         exclude: 'node_modules/**',
@@ -40,7 +45,7 @@ export default [
       typescript({
         tsconfigOverride: {
           include: [
-            getPkgPath('src'),
+            path.join(process.cwd(), 'src'),
           ],
         },
         // ATTN https://github.com/ezolenko/rollup-plugin-typescript2#some-compiler-options-are-forced
@@ -51,12 +56,11 @@ export default [
       copy({
         targets: [
           {
-            src: [
-              getPkgPath('src/index.html'),
-              getPkgPath('src/index.css'),
-              getPkgPath('src/images'),
-            ],
-            dest: getPkgPath('lib'),
+            src: TARGETS_TO_COPY,
+            dest: './lib',
+          },{
+            src: TARGETS_TO_COPY,
+            dest: './dist',
           },
         ]
       })

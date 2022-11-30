@@ -20,5 +20,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "puppeteer": ">= 13.5.1 < 14"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.6"
   }
 }

@@ -19,5 +19,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "puppeteer": ">= 13.5.1 < 14"
   }
 }
