@@ -12,21 +12,30 @@ type CreateGeneratorProps<ImageProps> = {
   html: (props: ImageProps) => string | Promise<string>
 }
 
+type PuppeteerOptions = Parameters<typeof puppeteer.launch>[0]
+
+type PuppeteerInitialOptions = {
+  headless: boolean
+  devtools: boolean
+  args: string[]
+}
+
 type GeneratorProps<ImageProps> = {
   output?: string // output filepath
   filename?: string
   props: ImageProps
+  modifyPuppeteerOptions?(options: PuppeteerInitialOptions): PuppeteerOptions
 }
 
 export const createGenerator = <ImageProps extends {}>(props: CreateGeneratorProps<ImageProps>) => {
   const { headless = true, width, height, type, scaleFactor = 1, html: getHtml } = props
 
   return async <T extends GeneratorProps<ImageProps>>(props: T): Promise<Result<T> | undefined> => {
-    const { output, filename = 'image', props: htmlProps } = props
+    const { output, filename = 'image', props: htmlProps, modifyPuppeteerOptions } = props
 
     const html = await getHtml(htmlProps)
 
-    const browser = await puppeteer.launch({
+    let launchOptions: PuppeteerOptions = {
       headless,
       devtools: false,
       args: [
@@ -35,7 +44,13 @@ export const createGenerator = <ImageProps extends {}>(props: CreateGeneratorPro
         '--disable-accelerated-video-decode',
         // '--allow-file-access-from-files',
       ],
-    })
+    }
+
+    if (typeof modifyPuppeteerOptions === 'function') {
+      launchOptions = modifyPuppeteerOptions(launchOptions as PuppeteerInitialOptions)
+    }
+
+    const browser = await puppeteer.launch(launchOptions)
 
     const page = await browser.newPage()
 
