@@ -14,8 +14,10 @@ html {
 }
 
 html, body {
+  width: 600px;
+  height: 315px;
   margin: 0;
-  width: fit-content;
+  padding: 0;
 }
 
 * {
@@ -27,6 +29,7 @@ html, body {
   height: 315px;
   padding: 30px 16px 0 23px;
   background-size: cover;
+  overflow: hidden;
 }
 
 .logo {
@@ -53,7 +56,7 @@ html, body {
 .card {
   flex: none;
   width: 280px;
-  padding: 12px 4px;
+  padding: 12px 4px 8px;
   font-weight: 500;
   background: #1F1F24;
   border: 1px solid #333338;
@@ -62,11 +65,15 @@ html, body {
 }
 
 .cardTitle {
+  padding: 0 10px;
   margin-bottom: 11px;
   color: #8A8A98;
   text-align: center;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .teams {
@@ -98,14 +105,14 @@ html, body {
 .date {
   color: #8A8A98;
   font-size: 13px;
-  line-height: 14px;
+  line-height: 16px;
 }
 
 .time {
   margin-top: 2px;
   color: #fff;
   font-size: 13px;
-  line-height: 18px;
+  line-height: 16px;
 }
 
 .teamNames {
@@ -115,9 +122,14 @@ html, body {
 }
 
 .teamName {
-  padding: 12px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 32px;
+  margin-top: 4px;
+  padding: 0 6px;
   color: #fff;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 16px;
 }

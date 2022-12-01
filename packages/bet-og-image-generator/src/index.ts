@@ -17,6 +17,7 @@ export type Props = {
 }
 
 export default createGenerator<Props>({
+  headless: false,
   width: 600,
   height: 315,
   type: 'jpeg',
