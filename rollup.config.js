@@ -16,7 +16,7 @@ const TARGETS_TO_COPY = [
 
 export default [
   {
-    input: './src/index.ts',
+    input: './index.ts',
     output: [
       {
         file: './lib/index.js',
@@ -48,6 +48,7 @@ export default [
             path.join(process.cwd(), 'src'),
           ],
         },
+        clean: true,
         // ATTN https://github.com/ezolenko/rollup-plugin-typescript2#some-compiler-options-are-forced
         // >> declarationDir: Rollup's output.file or output.dir (unless useTsconfigDeclarationDir is true in the plugin options)
         // this allows to create only one .d.ts file in src/ folder of a package

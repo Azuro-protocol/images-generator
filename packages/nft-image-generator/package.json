@@ -8,7 +8,7 @@
   "homepage": "https://github.com/Azuro-protocol/images-generator/packages/nft-image-generator#readme",
   "main": "lib/index.js",
   "module": "dist/index.es.js",
-  "types": "src/index.d.ts",
+  "types": "index.d.ts",
   "license": "ISC",
   "scripts": {
     "dev": "rollup -c ../../rollup.config.js -w",

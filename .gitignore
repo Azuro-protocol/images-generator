@@ -7,6 +7,6 @@ node_modules/
 # build
 lib/
 dist/
-/packages/**/index.d.ts
+/packages/**/*.d.ts
 /shared/**/*.d.ts
 test-image.*
