@@ -1,5 +1,10 @@
 > This readme is for Developers only.
 
+## Current packages
+
+[@azuro-protocol/nft-image-generator](https://www.npmjs.com/package/@azuro-protocol/nft-image-generator)
+[@azuro-protocol/bet-og-image-generator](https://www.npmjs.com/package/@azuro-protocol/bet-og-image-generator)
+
 
 ## Add new package
 
