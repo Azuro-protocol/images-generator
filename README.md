@@ -2,7 +2,7 @@
 
 ## Current packages
 
-[@azuro-protocol/nft-image-generator](https://www.npmjs.com/package/@azuro-protocol/nft-image-generator)
+[@azuro-protocol/nft-image-generator](https://www.npmjs.com/package/@azuro-protocol/nft-image-generator)<br />
 [@azuro-protocol/bet-og-image-generator](https://www.npmjs.com/package/@azuro-protocol/bet-og-image-generator)
 
 
