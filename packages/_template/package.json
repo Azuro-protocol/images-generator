@@ -1,5 +1,5 @@
 {
-  "name": "@azuro-protocol/<package_name>",
+  "name": "@azuro-org/<package_name>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Azuro-protocol/images-generator.git"

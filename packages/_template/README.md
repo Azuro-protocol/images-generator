@@ -9,7 +9,7 @@ type Props = {
 ### Usage
 
 ```typescript
-import generateImage, { type Props } from '@azuro-protocol/<package_name>'
+import generateImage, { type Props } from '@azuro-org/<package_name>'
 
 const props: Props = {
   

@@ -24,7 +24,7 @@ type Props = {
 ### Usage
 
 ```typescript
-import generateImage, { Props } from '@azuro-protocol/nft-image-generator';
+import generateImage, { Props } from '@azuro-org/nft-image-generator';
 
 const props: Props = {
   type: 'match',

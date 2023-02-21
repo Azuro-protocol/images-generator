@@ -65,4 +65,4 @@ There are `dev`, `build` and `test` scripts in package folder.
 
 ## Publish
 
-Publish npm package with `npm run publish`. For access to `@azuro-protocol` scope ask Pavel Ivanov or Stas Onatskiy.
+Publish npm package with `npm run publish`. For access to `@azuro-org` scope ask Pavel Ivanov or Stas Onatskiy.
