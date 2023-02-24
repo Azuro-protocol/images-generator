@@ -1,15 +1,24 @@
 {
-  "name": "azuro-images-generator",
-  "version": "0.1.0",
+  "name": "@azuro-org/images-generator",
+  "version": "1.0.0",
   "license": "ISC",
   "engines": {
     "node": "=16.15.1",
     "npm": "=8.11.0"
   },
-  "typings": "./index.d.ts",
+  "module": "dist/index.es.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "dev": "rollup -c ./rollup.config.js -w",
+    "build": "rimraf ./dist && rimraf ./lib && rollup -c ./rollup.config.js --compact",
+    "build-and-test": "npm run build && npm run test",
+    "prepublish": "npm run build"
+  },
   "dependencies": {
     "axios": "^0.26.1",
     "builtin-modules": "^3.2.0",
+    "dayjs": "^1.11.7",
     "puppeteer": "^19.3.0"
   },
   "devDependencies": {
@@ -25,6 +34,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/node": "^17.0.21",
+    "glob": "^8.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.67.0",
     "rollup-plugin-babel": "^4.4.0",

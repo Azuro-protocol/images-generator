@@ -1,26 +1,79 @@
-> This readme is for Developers only.
+# @azuro-org/images-generator
 
-## Current packages
+## Usage
 
-[@azuro-protocol/nft-image-generator](https://www.npmjs.com/package/@azuro-protocol/nft-image-generator)<br />
-[@azuro-protocol/bet-og-image-generator](https://www.npmjs.com/package/@azuro-protocol/bet-og-image-generator)
+```typescript
+import { generateImage } from '@azuro-org/images-generator';
+import template, { type Props } from '@azuro-org/images-generator/dist/templates/bet-nft';
+
+const props: Props = {
+  type: 'match',
+  sport: 'soccer',
+  league: 'Leinster Senior League Senior Division',
+  team1: {
+    img: 'https://content.bookieratings.net/images/fq/tx/fqtxnf_20181001112329_100x100.png',
+    name: 'Nizhny Novgorod'
+  },
+  team2: {
+    img: 'https://content.bookieratings.net/images/fq/tx/fqtxnf_20181001112329_100x100.png',
+    name: 'Lokomotiv Moscow'
+  },
+  date: '21.03.2022 8:00 UTC',
+  betAmount: '100 USDC',
+  outcome: 'Total Under(2.5)',
+  betOdds: '2.88',
+  currentOdds: '1.88'
+}
+
+// get image buffer
+const buffer = generateImage({
+  template,
+  props,
+})
+
+// create image file
+generateImage({
+  template,
+  props,
+  output: './dist',
+})
+```
+
+## Options
+
+```
+type PuppeteerOptions = Parameters<typeof puppeteer.launch>[0]
+
+type PuppeteerInitialOptions = {
+  headless: boolean
+  devtools: boolean
+  args: string[]
+}
+
+generateImage({
+  output?: string // output filepath
+  filename?: string // default "image"
+  props: any
+  modifyPuppeteerOptions?(options: PuppeteerInitialOptions): PuppeteerOptions
+})
+```
 
 
-## Add new package
+# Contributing
 
-1. Copy `packages/_template` to `packages/` and rename it to your package name.
-2. Change package `"name"` and `"homepage"` fields in `package.json` file.
-3. Use `index.css` for CSS.
-4. Use `index.html` for HTML.
-5. Create `src/images` folder for images if required.
+## Add new template
+
+1. Copy `templates/_template` to `templates/{your_template_name}`.
+3. Use `index.html` for HTML. Write CSS in `index.html` file.
+4. Create `templates/{your_template_name}/images` folder for images if required.
 
 
 ## Setup generator
 
-Edit `src/index.ts` file:
+Edit `{your_template_name}/index.ts` file:
 
 ```typescript
-import { getFile, downloadImage, createGenerator } from '../../../shared/utils'
+import { type Template, getFile, downloadImage, createGenerator } from '../../utils'
 
 export type Props = {
   team1ImageSrc: string
@@ -28,11 +81,11 @@ export type Props = {
   date: string
 }
 
-export default createGenerator<Props>({
+const template = {
   width: 800,
   height: 400,
   type: 'jpeg',
-  html: async (props) => {
+  html: async (props: Props) => {
     const { team1ImageSrc, team2ImageSrc, date } = props
 
     let html = getFile('./index.html')
@@ -47,7 +100,9 @@ export default createGenerator<Props>({
       .replace('{image2}', team2Img)
       .replace('{date}', date)
   },
-})
+}
+
+export default template
 ```
 
 
@@ -56,16 +111,6 @@ export default createGenerator<Props>({
 `type: 'png' | 'jpeg'`<br /><br />
 `headless: Boolean` - use true to see compiled html in browser<br /><br />
 `scaleFactor: 1 | 2` - use 2 if you need to generate x2 sized image
-
-
-## Write tests
-
-Edit `test/index.js` file.
-
-
-## Dev, build and test
-
-There are `dev`, `build` and `test` scripts in package folder.
 
 
 ## Publish

@@ -1,11 +1,11 @@
-import { getFile, getBase64Image, downloadImage, createGenerator } from '../../../shared/utils'
+import { type Template, getFile, getBase64Image, downloadImage } from '../../utils'
 
 
 export type Props = {
 
 }
 
-export default createGenerator<Props>({
+const template: Template = {
   width: 1000,
   height: 1000,
   type: 'png',
@@ -17,4 +17,6 @@ export default createGenerator<Props>({
 
     return html.replace('.style{}', css)
   }
-})
+}
+
+export default template

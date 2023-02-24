@@ -1,4 +1,6 @@
-import { getFile, getBase64Image, downloadImage, createGenerator } from '../../../shared/utils'
+import path from 'path'
+
+import { type Template, getFile, getBase64Image, downloadImage } from '../../utils'
 
 
 const matchType = {
@@ -29,25 +31,23 @@ export type Props = {
   currentOdds: string
 }
 
-export default createGenerator<Props>({
+const template: Template = {
   width: 510,
   height: 510,
   type: 'png',
-  html: async (props) => {
+  html: async (props: Props) => {
     const { type, sport, league, team1, team2, date, betAmount, outcome, betOdds, currentOdds } = props
 
-    let html = getFile('./index.html')
-    let css = getFile('./index.css')
+    const html = getFile(path.resolve(__dirname, 'index.html'))
 
-    const shadow = getBase64Image('./images/shadow.png')
-    const logo = getBase64Image('./images/logo.png')
-    const separator = getBase64Image('./images/separator.png')
+    const shadow = getBase64Image(path.resolve(__dirname, 'images/shadow.png'))
+    const logo = getBase64Image(path.resolve(__dirname, 'images/logo.png'))
+    const separator = getBase64Image(path.resolve(__dirname, 'images/separator.png'))
 
     const team1Img = await downloadImage(team1.img)
     const team2Img = await downloadImage(team2.img)
 
     return html
-      .replace('.style{}', css)
       .replace('{sport}', sport)
       .replace('{league}', league)
       .replace('{image1}', team1Img)
@@ -64,4 +64,6 @@ export default createGenerator<Props>({
       .replace('{shadow}', shadow)
       .replace('{logo}', logo)
   },
-})
+}
+
+export default template

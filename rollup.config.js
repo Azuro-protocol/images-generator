@@ -1,4 +1,5 @@
-import path from 'path'
+import glob from 'glob'
+import path from 'node:path'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import builtins from 'builtin-modules/static'
 import commonjs from '@rollup/plugin-commonjs'
@@ -8,63 +9,98 @@ import json from '@rollup/plugin-json'
 import copy from 'rollup-plugin-copy'
 
 
+const templateFolders = (
+  glob.sync('src/templates/*')
+    .filter((folder) => !folder.includes('_template'))
+    .map((folder) => path.relative('src', folder))
+)
+
 const TARGETS_TO_COPY = [
-  './src/index.html',
-  './src/index.css',
-  './src/images',
+  'index.html',
+  'images',
 ]
 
+const main = {
+  input: './src/index.ts',
+  output: [
+    {
+      file: './lib/index.js',
+      format: 'cjs',
+      exports: 'named',
+    },
+    {
+      file: './dist/index.es.js',
+      format: 'es',
+      exports: 'named',
+    },
+  ],
+  external: [
+    ...builtins,
+    'puppeteer',
+  ],
+  plugins: [
+    nodeResolve(),
+    commonjs(),
+    json(),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+    typescript({
+      tsconfigOverride: {
+        include: [
+          'src/index.ts',
+        ],
+      },
+      clean: true,
+    }),
+    copy({
+      targets: templateFolders.map((folder) => (
+        TARGETS_TO_COPY.map((fileName) => (
+          [ 'dist', 'lib' ].map((dest) => ({
+            src: path.join('src', folder, fileName),
+            dest: path.join(dest, folder),
+          })).flat()
+        )).flat()
+      )).flat(),
+    })
+  ],
+}
+
+const templates = {
+  input: Object.fromEntries(
+    templateFolders.map((file) => [
+      path.join(file, 'index'),
+      path.resolve(`src/${file}/index.ts`),
+    ])
+  ),
+  output: [
+    {
+      dir: 'lib',
+      format: 'cjs',
+      exports: 'default',
+    },
+    {
+      dir: 'dist',
+      format: 'es',
+    },
+  ],
+  external: [
+    ...builtins,
+  ],
+  plugins: [
+    nodeResolve(),
+    commonjs(),
+    json(),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+    typescript({
+      clean: true,
+    }),
+  ],
+}
+
 export default [
-  {
-    input: './index.ts',
-    output: [
-      {
-        file: './lib/index.js',
-        format: 'cjs',
-        exports: 'named',
-      },
-      {
-        file: './dist/index.es.js',
-        format: 'es',
-        exports: 'named',
-      },
-    ],
-    external: [
-      ...builtins,
-      'puppeteer',
-    ],
-    plugins: [
-      nodeResolve({
-        rootDir: path.join(process.cwd(), '../../node_modules'), // repository root dir
-      }),
-      commonjs(),
-      json(),
-      babel({
-        exclude: 'node_modules/**',
-      }),
-      typescript({
-        tsconfigOverride: {
-          include: [
-            path.join(process.cwd(), 'src'),
-          ],
-        },
-        clean: true,
-        // ATTN https://github.com/ezolenko/rollup-plugin-typescript2#some-compiler-options-are-forced
-        // >> declarationDir: Rollup's output.file or output.dir (unless useTsconfigDeclarationDir is true in the plugin options)
-        // this allows to create only one .d.ts file in src/ folder of a package
-        useTsconfigDeclarationDir: true,
-      }),
-      copy({
-        targets: [
-          {
-            src: TARGETS_TO_COPY,
-            dest: './lib',
-          },{
-            src: TARGETS_TO_COPY,
-            dest: './dist',
-          },
-        ]
-      })
-    ],
-  }
+  main,
+  templates,
 ]

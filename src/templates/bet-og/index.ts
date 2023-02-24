@@ -1,6 +1,7 @@
+import path from 'path'
 import dayjs from 'dayjs'
 
-import { getFile, getBase64Image, createGenerator } from '../../../shared/utils'
+import { type Template, getFile, getBase64Image } from '../../utils'
 
 
 export type Props = {
@@ -16,7 +17,7 @@ export type Props = {
   }
 }
 
-export default createGenerator<Props>({
+const template: Template = {
   width: 600,
   height: 315,
   type: 'jpeg',
@@ -25,8 +26,10 @@ export default createGenerator<Props>({
     const { title, game } = props
     const { country, league, participants, startsAt } = game
 
-    const bgImage = getBase64Image('./images/bg.jpg')
-    const logoImage = getBase64Image('./images/logo.png')
+    const html = getFile(path.resolve(__dirname, 'index.html'))
+
+    const bgImage = getBase64Image(path.resolve(__dirname, 'images/bg.jpg'))
+    const logoImage = getBase64Image(path.resolve(__dirname, 'images/logo.png'))
 
     const team1Image = participants[0].image
     const team1Name = participants[0].name
@@ -37,11 +40,7 @@ export default createGenerator<Props>({
     const date = dateTime.format('DD MMM')
     const time = dateTime.format('HH:mm')
 
-    let html = getFile('./index.html')
-    let css = getFile('./index.css')
-
     return html
-      .replace('.style{}', css)
       .replace('{bgImage}', bgImage)
       .replace('{logoImage}', logoImage)
       .replace('{title}', title)
@@ -54,4 +53,6 @@ export default createGenerator<Props>({
       .replace('{date}', date)
       .replace('{time}', time)
   }
-})
+}
+
+export default template

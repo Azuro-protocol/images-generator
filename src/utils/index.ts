@@ -1,18 +1,13 @@
 import fs from 'fs'
-import path from 'path'
 import axios from 'axios'
 
 
-export const getPath = (filePath: string) => {
-  return path.join(__dirname, filePath)
-}
-
 export const getFile = (filePath: string) => {
-  return fs.readFileSync(getPath(filePath), 'utf8')
+  return fs.readFileSync(filePath, 'utf8')
 }
 
 export const getBase64Image = (filePath: string) => {
-  return `data:image/png;base64,${fs.readFileSync(getPath(filePath)).toString('base64')}`
+  return `data:image/png;base64,${fs.readFileSync(filePath).toString('base64')}`
 }
 
 export const downloadImage = async (url: string) => {
@@ -34,4 +29,4 @@ export const downloadImage = async (url: string) => {
   return `data:image/png;base64,${base64}`
 }
 
-export { createGenerator } from './createGenerator'
+export { type Template } from './types'

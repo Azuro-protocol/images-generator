@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-weight: 700;
+      font-family: 'Fivo Sans Modern';
+      font-style: normal;
+      src: url('/fonts/fivo-sans-modern/bold.woff2') format('woff2'),
+      url('/fonts/fivo-sans-modern/bold.woff') format('woff');
+      font-display: swap;
+      unicode-range: U+000-5FF; /* Latin glyphs */
+    }
+
+    html {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    html, body {
+      width: 600px;
+      height: 315px;
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .opengraph {
+      width: 600px;
+      height: 315px;
+      padding: 30px 16px 0 23px;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .logo {
+      display: block;
+      height: 24px;
+      margin-bottom: 36px;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .title {
+      padding-right: 40px;
+      color: #fff;
+      font-size: 30px;
+      line-height: 32px;
+      font-weight: 700;
+      font-family: 'Fivo Sans Modern', sans-serif;
+    }
+
+    .card {
+      flex: none;
+      width: 280px;
+      padding: 12px 4px 8px;
+      font-weight: 500;
+      background: #1F1F24;
+      border: 1px solid #333338;
+      box-shadow: 0 4px 22px rgba(0, 0, 0, 0.2);
+      border-radius: 9px;
+    }
+
+    .cardTitle {
+      padding: 0 10px;
+      margin-bottom: 11px;
+      color: #8A8A98;
+      text-align: center;
+      font-size: 13px;
+      line-height: 16px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .teams {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .teamImage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 68px;
+      height: 68px;
+      background: #27272B;
+      border-radius: 50%;
+    }
+
+    .teamImage img {
+      display: block;
+      width: 40px;
+    }
+
+    .dates {
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .date {
+      color: #8A8A98;
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    .time {
+      margin-top: 2px;
+      color: #fff;
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    .teamNames {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 44px;
+    }
+
+    .teamName {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 32px;
+      margin-top: 4px;
+      padding: 0 6px;
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      line-height: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="opengraph" style="background-image: url({bgImage});">
+    <img class="logo" src="{logoImage}" alt="" />
+    <div class="content">
+      <div class="title">{title}</div>
+      <div class="card">
+        <div class="cardTitle">{country}&nbsp;&middot;&nbsp;{league}</div>
+        <div class="teams">
+          <div class="teamImage">
+            <img src="{team1Image}" alt="" />
+          </div>
+          <div class="dates">
+            <div class="date">{date}</div>
+            <div class="time">{time}</div>
+          </div>
+          <div class="teamImage">
+            <img src="{team2Image}" alt="" />
+          </div>
+        </div>
+        <div class="teamNames">
+          <div class="teamName">
+            <span>{team1Name}</span>
+          </div>
+          <div class="teamName">
+            <span>{team2Name}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
