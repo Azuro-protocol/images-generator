@@ -46,7 +46,9 @@ generateImage({
 
 # Examples
 
-## Bet Opengraph
+<details>
+<summary><h2>Bet Opengraph</h2></summary>
+<p>
 
 ```typescript
 import { generateImage } from '@azuro-org/images-generator';
@@ -80,9 +82,12 @@ generateImage({
 <p>
   <img src="./src/templates/bet-og/example.jpeg" width="600" />
 </p>
+</p>
+</details>
 
-
-## Bet NFT
+<details>
+<summary><h2>Bet NFT</h2></summary>
+<p>
 
 ```typescript
 import { generateImage } from '@azuro-org/images-generator';
@@ -116,6 +121,8 @@ generateImage({
 <p>
   <img src="./src/templates/bet-nft/example.png" width="255" />
 </p>
+</p>
+</details>
 
 
 # Contributing
