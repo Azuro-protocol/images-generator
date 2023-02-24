@@ -47,7 +47,7 @@ generateImage({
 # Examples
 
 <details>
-<summary><h3>Bet Opengraph</h3></summary>
+<summary><b>Bet Opengraph</b></summary>
 <p>
 
 ```typescript
@@ -80,13 +80,13 @@ generateImage({
 ### Result
 
 <p>
-  <img src="./src/templates/bet-og/example.jpeg" width="600" />
+  <img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/bet-og/example.jpeg" width="600" />
 </p>
 </p>
 </details>
 
 <details>
-<summary><h3>Bet NFT</h3></summary>
+<summary><b>Bet NFT</b></summary>
 <p>
 
 ```typescript
@@ -119,13 +119,13 @@ generateImage({
 ### Result
 
 <p>
-  <img src="./src/templates/bet-nft/example.png" width="255" />
+  <img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/bet-nft/example.png" width="255" />
 </p>
 </p>
 </details>
 
 <details>
-<summary><h3>Bet Opengraph</h3></summary>
+<summary><b>Bet Opengraph</b></summary>
 <p>
 
 ```typescript
@@ -144,7 +144,7 @@ generateImage({
 ### Result
 
 <p>
-  <img src="./src/templates/freebet/example.png" width="416" />
+  <img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/freebet/example.png" width="416" />
 </p>
 </p>
 </details>
