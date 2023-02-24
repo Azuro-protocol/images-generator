@@ -47,7 +47,7 @@ generateImage({
 # Examples
 
 <details>
-<summary><h2>Bet Opengraph</h2></summary>
+<summary><h3>Bet Opengraph</h3></summary>
 <p>
 
 ```typescript
@@ -86,7 +86,7 @@ generateImage({
 </details>
 
 <details>
-<summary><h2>Bet NFT</h2></summary>
+<summary><h3>Bet NFT</h3></summary>
 <p>
 
 ```typescript
