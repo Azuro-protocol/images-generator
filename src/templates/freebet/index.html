@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//raw.githubusercontent.com/Azuro-protocol/public-assets/main/fonts/fivo-sans-modern/style.css" rel="stylesheet" />
+  <style>
+    html, body {
+      width: 416px;
+      height: 250px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .image {
+      width: 416px;
+      height: 250px;
+      padding-top: 75px;
+      padding-left: 30px;
+      font-family: 'Fivo Sans Modern';
+      font-weight: 700;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .amount {
+      font-size: 48px;
+      line-height: 50px;
+    }
+
+    .text-gradient {
+      background: linear-gradient(271.45deg, #FCBD89 -22.37%, #B78EFF 34.63%, #82FCF4 117.18%), #FFFFFF;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+
+    .amount span {
+      color: #fff;
+    }
+
+    .date {
+      margin-top: 8px;
+      font-size: 16px;
+      line-height: 110%;
+      color: #6EE0A3;
+    }
+  </style>
+</head>
+<body>
+  <div class="image" style="background-image: url({bgImage});">
+    <div class="amount">
+      <div class="text-gradient">{amount} xDAI</div>
+      <span>freebet!</span>
+    </div>
+    <div class="date">Valid until {date}</div>
+  </div>
+</body>
+</html>

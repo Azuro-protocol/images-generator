@@ -124,6 +124,31 @@ generateImage({
 </p>
 </details>
 
+<details>
+<summary><h3>Bet Opengraph</h3></summary>
+<p>
+
+```typescript
+import { generateImage } from '@azuro-org/images-generator';
+import template from '@azuro-org/images-generator/lib/templates/freebet';
+
+generateImage({
+  template,
+  props: {
+    amount: 5,
+    date: '12.01.2022',
+  },
+})
+```
+
+### Result
+
+<p>
+  <img src="./src/templates/freebet/example.png" width="416" />
+</p>
+</p>
+</details>
+
 
 # Contributing
 
