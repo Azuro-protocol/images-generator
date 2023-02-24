@@ -1,6 +1,6 @@
 {
   "name": "@azuro-org/images-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "ISC",
   "engines": {
     "node": "=16.15.1",
