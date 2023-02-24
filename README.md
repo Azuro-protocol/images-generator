@@ -7,22 +7,7 @@ import { generateImage } from '@azuro-org/images-generator';
 import template, { type Props } from '@azuro-org/images-generator/lib/templates/bet-nft';
 
 const props: Props = {
-  type: 'match',
-  sport: 'soccer',
-  league: 'Leinster Senior League Senior Division',
-  team1: {
-    img: 'https://content.bookieratings.net/images/fq/tx/fqtxnf_20181001112329_100x100.png',
-    name: 'Nizhny Novgorod'
-  },
-  team2: {
-    img: 'https://content.bookieratings.net/images/fq/tx/fqtxnf_20181001112329_100x100.png',
-    name: 'Lokomotiv Moscow'
-  },
-  date: '21.03.2022 8:00 UTC',
-  betAmount: '100 USDC',
-  outcome: 'Total Under(2.5)',
-  betOdds: '2.88',
-  currentOdds: '1.88'
+  // ...
 }
 
 // get image buffer
@@ -57,6 +42,80 @@ generateImage({
   modifyPuppeteerOptions?(options: PuppeteerInitialOptions): PuppeteerOptions
 })
 ```
+
+
+# Examples
+
+## Bet Opengraph
+
+```typescript
+import { generateImage } from '@azuro-org/images-generator';
+import template from '@azuro-org/images-generator/lib/templates/bet-og';
+
+generateImage({
+  template,
+  props: {
+    title: 'Decentralized betting is awesome!',
+    game: {
+      country: 'International Tournaments',
+      league: 'ESL Challenger League North America',
+      participants: [
+        {
+          name: 'WINDINGO',
+          image: 'https://content.bookmaker.xyz/avatars/provider-3/4757.png',
+        },
+        {
+          name: 'Los Grandes Academy',
+          image: 'https://content.bookmaker.xyz/avatars/provider-3/4739.png',
+        },
+      ],
+      startsAt: Date.now(),
+    }
+  },
+})
+```
+
+### Result
+
+<p>
+  <img src="./src/templates/bet-og/example.jpeg" width="600" />
+</p>
+
+
+## Bet NFT
+
+```typescript
+import { generateImage } from '@azuro-org/images-generator';
+import template from '@azuro-org/images-generator/lib/templates/bet-nft';
+
+generateImage({
+  template,
+  props: {
+    type: 'match',
+    sport: 'Football',
+    league: 'International Tournaments · FIFA - World Cup',
+    team1: {
+      img: 'https://content.bookmaker.xyz/avatars/provider-3/4757.png',
+      name: 'Ecuador',
+    },
+    team2: {
+      img: 'https://content.bookmaker.xyz/avatars/provider-3/4739.png',
+      name: 'Senegal',
+    },
+    date: 'Dec 24, 2020',
+    betAmount: '100 xDAI',
+    outcome: 'Senegal',
+    betOdds: '1.7',
+    currentOdds: '1.2',
+  },
+})
+```
+
+### Result
+
+<p>
+  <img src="./src/templates/bet-nft/example.png" width="255" />
+</p>
 
 
 # Contributing
