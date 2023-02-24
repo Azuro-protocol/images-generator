@@ -4,7 +4,7 @@
 
 ```typescript
 import { generateImage } from '@azuro-org/images-generator';
-import template, { type Props } from '@azuro-org/images-generator/dist/templates/bet-nft';
+import template, { type Props } from '@azuro-org/images-generator/lib/templates/bet-nft';
 
 const props: Props = {
   type: 'match',
@@ -41,7 +41,7 @@ generateImage({
 
 ## Options
 
-```
+```typescript
 type PuppeteerOptions = Parameters<typeof puppeteer.launch>[0]
 
 type PuppeteerInitialOptions = {
@@ -73,6 +73,8 @@ generateImage({
 Edit `{your_template_name}/index.ts` file:
 
 ```typescript
+import path from 'path'
+
 import { type Template, getFile, downloadImage, createGenerator } from '../../utils'
 
 export type Props = {
@@ -88,14 +90,12 @@ const template = {
   html: async (props: Props) => {
     const { team1ImageSrc, team2ImageSrc, date } = props
 
-    let html = getFile('./index.html')
-    let css = getFile('./index.css')
+    const html = getFile(path.join(__dirname, 'index.html'))
 
     const team1Img = await downloadImage(team1ImageSrc)
     const team2Img = await downloadImage(team2ImageSrc)
 
     return html
-      .replace('.style{}', css)
       .replace('{image1}', team1Img)
       .replace('{image2}', team2Img)
       .replace('{date}', date)
@@ -104,14 +104,6 @@ const template = {
 
 export default template
 ```
-
-
-## `createGenerator` options
-
-`type: 'png' | 'jpeg'`<br /><br />
-`headless: Boolean` - use true to see compiled html in browser<br /><br />
-`scaleFactor: 1 | 2` - use 2 if you need to generate x2 sized image
-
 
 ## Publish
 

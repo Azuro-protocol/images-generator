@@ -1,21 +1,24 @@
+import path from 'path'
+
 import { type Template, getFile, getBase64Image, downloadImage } from '../../utils'
 
 
 export type Props = {
-
+  /* your props here */
 }
 
 const template: Template = {
-  width: 1000,
-  height: 1000,
+  width: 800,
+  height: 400,
   type: 'png',
-  html: (props: Props) => {
-    const {  } = props
+  html: async (props: Props) => {
+    const { /* your props here */ } = props
 
-    let html = getFile('./index.html')
-    let css = getFile('./index.css')
+    // all file paths should be joined with using __dirname!
+    const html = getFile(path.join(__dirname, 'index.html'))
 
-    return html.replace('.style{}', css)
+    return html
+      .replace('{SOME_PROP}', 'SOME_VALUE')
   }
 }
 
