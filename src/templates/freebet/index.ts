@@ -4,7 +4,7 @@ import { type Template, getFile, getBase64Image } from '../../utils'
 
 
 export type Props = {
-  amount: number | string
+  amount: string
   date: string
 }
 
@@ -21,7 +21,7 @@ const template: Template = {
 
     return html
       .replace('{bgImage}', bgImage)
-      .replace('{amount}', String(amount))
+      .replace('{amount}', amount)
       .replace('{date}', date)
   }
 }

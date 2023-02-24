@@ -135,7 +135,7 @@ import template from '@azuro-org/images-generator/lib/templates/freebet';
 generateImage({
   template,
   props: {
-    amount: 5,
+    amount: '5 xDAI',
     date: '12.01.2022',
   },
 })
