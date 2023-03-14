@@ -11,7 +11,7 @@ export type Props = {
 const template: Template = {
   width: 416,
   height: 250,
-  type: 'png',
+  type: 'jpeg',
   scaleFactor: 2,
   html: async (props: Props) => {
     const { amount, date } = props

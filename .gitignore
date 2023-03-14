@@ -10,3 +10,4 @@ dist/
 /packages/**/*.d.ts
 /shared/**/*.d.ts
 test-image.*
+/test/images

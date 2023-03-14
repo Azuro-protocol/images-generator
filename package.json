@@ -1,6 +1,6 @@
 {
   "name": "@azuro-org/images-generator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "ISC",
   "engines": {
     "node": "=16.15.1",
@@ -10,10 +10,11 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "test": "rimraf ./test/images && node ./test",
     "dev": "rollup -c ./rollup.config.js -w",
     "build": "rimraf ./dist && rimraf ./lib && rollup -c ./rollup.config.js --compact",
     "build-and-test": "npm run build && npm run test",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "axios": "^0.26.1",

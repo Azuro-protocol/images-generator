@@ -1,3 +1,4 @@
+import fs from 'fs'
 import puppeteer from 'puppeteer'
 
 import { type Template } from './types'
@@ -57,11 +58,17 @@ export default async function generateImage<T extends GenerateImageProps>(props:
   }
 
   const browser = await puppeteer.launch(launchOptions)
-
   const page = await browser.newPage()
 
-  await page.setViewport({ width, height, deviceScaleFactor: scaleFactor })
-  await page.setContent(html)
+  await page.setViewport({
+    width,
+    height,
+    deviceScaleFactor: scaleFactor,
+  })
+
+  await page.goto(`data:text/html;charset=UTF-8,${encodeURIComponent(html)}`, {
+    waitUntil: 'networkidle0',
+  })
 
   const content = await page.$('body')
 
@@ -71,6 +78,10 @@ export default async function generateImage<T extends GenerateImageProps>(props:
   }
 
   if (output) {
+    if (!fs.existsSync(output)) {
+      fs.mkdirSync(output)
+    }
+
     const filePath = `${output.replace(/\/$/, '')}/${filename.replace(/\..+$/, '')}.${type}`
 
     await content!.screenshot({ path: filePath })

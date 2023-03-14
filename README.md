@@ -36,8 +36,8 @@ type PuppeteerInitialOptions = {
 }
 
 generateImage({
-  output?: string // output filepath
-  filename?: string // default "image"
+  output?: string // the folder path where the image will be generated
+  filename?: string // image name, default is "image"
   props: any
   modifyPuppeteerOptions?(options: PuppeteerInitialOptions): PuppeteerOptions
 })
