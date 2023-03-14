@@ -1,10 +1,10 @@
 {
   "name": "@azuro-org/images-generator",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "ISC",
   "engines": {
-    "node": "=16.15.1",
-    "npm": "=8.11.0"
+    "node": ">=16.15.1",
+    "npm": ">=8.11.0"
   },
   "module": "dist/index.es.js",
   "main": "lib/index.js",
