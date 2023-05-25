@@ -79,7 +79,7 @@ generateImage({
 
 ### Result
 
-<img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/combo-bet-og/example.jpeg" width="600" />
+<img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/bet-og/example.jpeg" width="600" />
 </p>
 </details>
 
@@ -120,7 +120,7 @@ generateImage({
 
 ### Result
 
-<img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/bet-og/example.jpeg" width="600" />
+<img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/combo-bet-og/example.jpeg" width="600" />
 </p>
 </details>
 
