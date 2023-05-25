@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="//raw.githubusercontent.com/Azuro-protocol/public-assets/main/fonts/fivo-sans-modern/style.css" rel="stylesheet" />
+  <style>
+    html {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    html, body {
+      width: 600px;
+      height: 315px;
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .opengraph {
+      width: 600px;
+      height: 315px;
+      padding: 30px 16px 0 23px;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .logo {
+      display: block;
+      height: 24px;
+      margin-bottom: 36px;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .title {
+      width: 200px;
+      padding-right: 40px;
+      color: #fff;
+      font-size: 28px;
+      line-height: 30px;
+      font-weight: 700;
+      font-family: 'Fivo Sans Modern', sans-serif;
+    }
+
+    .card {
+      flex: none;
+      width: 220px;
+      padding: 0 4px 4px;
+      font-weight: 500;
+      background: #17171b;
+      border-radius: 6px;
+    }
+
+    .cardHeadline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px;
+    }
+
+    .cardTitle {
+      font-size: 11px;
+      line-height: 14px;
+      font-weight: 500;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(269.53deg, #FCBD89 0%, #B78EFF 49.29%, #82FCF4 99.81%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+
+    .betslipIcon {
+      width: 16px;
+      height: 16px;
+      background-size: contain;
+      background-position: center;
+    }
+
+    .items {
+      background-image: url("data:image/png;base64,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");
+      background-position: right -35px top -21px;
+      background-repeat: no-repeat;
+      background-color: #1f1f24;
+      border-radius: 4px;
+    }
+
+    .item {
+      padding: 6px;
+    }
+
+    .item:first-child {
+      border-bottom: 2px solid #17171b;
+    }
+
+    .value {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 600;
+    }
+
+    .label {
+      margin-top: 2px;
+      color: #8A8A98;
+      font-size: 15px;
+      line-height: 18px;
+      font-weight: 500;
+    }
+
+    .assetIcon {
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .assetIcon-USDT {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiMwMDkzOTMiLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIzLjY2IDl2Mi44NEgxNy45djEuOTZjNC4wNC4yMSA3LjA3IDEuMDggNy4wOSAyLjExdjIuMTZjLS4wMiAxLjAzLTMuMDUgMS45LTcuMSAyLjFWMjVoLTMuOHYtNC44M2MtNC4wNS0uMi03LjA4LTEuMDctNy4xLTIuMVYxNS45Yy4wMi0xLjAzIDMuMDUtMS45IDcuMS0yLjF2LTEuOTdIOC4zM1Y5aDE1LjMyWk0xNiAxOC43YzQuMzEgMCA3LjkxLS43NCA4LjgtMS43MS0uNzUtLjgzLTMuNDYtMS40OC02LjktMS42NnYyLjA2YTM2LjgyIDM2LjgyIDAgMCAxLTMuOCAwdi0yLjA2Yy0zLjQ0LjE4LTYuMTUuODMtNi45IDEuNjYuODkuOTcgNC40OSAxLjcgOC44IDEuN1oiIGZpbGw9IiMwMDkzOTMiLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIzLjY2IDl2Mi44NEgxNy45djEuOTZjNC4wNC4yMSA3LjA3IDEuMDggNy4wOSAyLjExdjIuMTZjLS4wMiAxLjAzLTMuMDUgMS45LTcuMSAyLjFWMjVoLTMuOHYtNC44M2MtNC4wNS0uMi03LjA4LTEuMDctNy4xLTIuMVYxNS45Yy4wMi0xLjAzIDMuMDUtMS45IDcuMS0yLjF2LTEuOTdIOC4zM1Y5aDE1LjMyWm0xLjEzIDcuOTljLS44OC45Ny00LjQ4IDEuNy04Ljc5IDEuNy00LjMxIDAtNy45MS0uNzMtOC44LTEuNy43NS0uODMgMy40Ni0xLjQ4IDYuOS0xLjY2djIuMDZhMzYuODMgMzYuODMgMCAwIDAgMy44IDB2LTIuMDZjMy40NC4xOCA2LjE1LjgzIDYuOSAxLjY2WiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPgo=");
+    }
+
+    .assetIcon-XDAI {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBvcGFjaXR5PSIwLjI1IiBjeD0iMTAiIGN5PSIxMCIgcj0iMTAiIGZpbGw9IiMzMEFCQTciLz4KPHBhdGggZD0iTTUgNUg5LjE2NjY3VjcuMDgzMzNINVY1WiIgZmlsbD0iIzMwQUJBNyIvPgo8cGF0aCBkPSJNMTAuODMzMyA1SDE1VjcuMDgzMzNIMTAuODMzM1Y1WiIgZmlsbD0iIzMwQUJBNyIvPgo8cGF0aCBkPSJNMTIuOTE2NyAxMC44MzMzVjEyLjkxNjdIMTAuODMzM1YxNUgxNVYxMC44MzMzSDEyLjkxNjdaIiBmaWxsPSIjMzBBQkE3Ii8+CjxwYXRoIGQ9Ik01IDEwLjgzMzNWMTVIOS4xNjY2N1YxMi45MTY3SDcuMDgzMzNWMTAuODMzM0g1WiIgZmlsbD0iIzMwQUJBNyIvPgo8L3N2Zz4K");
+    }
+  </style>
+</head>
+<body>
+  <div class="opengraph" style="background-image: url({bgImage});">
+    <img class="logo" src="{logoImage}" alt="" />
+    <div class="content">
+      <div class="title">{title}</div>
+      <div class="card">
+        <div class="cardHeadline">
+          <div class="cardTitle">My Combo Bet</div>
+          <img class="betslipIcon" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYgMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTkuMjA0IDMuMzc0YTEuMTk4IDEuMTk4IDAgMCAxLS44NTMtLjg4NmMtLjA5OC0uMzk4LS40MzgtLjctLjgzNy0uODA2bC0xLjQ2OC0uMzk0YTEuMiAxLjIgMCAwIDAtMS40NjYuODQ3TDIuMSAxMS4zODRhMS4xOSAxLjE5IDAgMCAwIC44NDIgMS40NThsMS40NzUuMzk2Yy4zOTguMTA2Ljg0My4wMiAxLjEyMi0uMjgyLjMtLjMxLjc0Ny0uNDUgMS4xODYtLjMzMy40NC4xMTguNzYuNDcuODUzLjg4NS4wOTguMzk4LjQzOC43LjgzNy44MDdsMS40NjkuMzk0YTEuMiAxLjIgMCAwIDAgMS40NjYtLjg0N2wyLjQ3OC05LjI1YTEuMiAxLjIgMCAwIDAtLjg0Ni0xLjQ2NWwtMS40NjktLjM5NGMtLjM5OS0uMTA2LS44NDQtLjAxNS0xLjEyOC4yOGExLjE5OCAxLjE5OCAwIDAgMS0xLjE4Mi4zNFptMS41MTggMy44MTRMOS40MSA4LjM4NmwuNTQ0IDEuNjk0Yy4wOC4yNTctLjE5OS40ODYtLjQzNC4zNDlsLTEuNTQ5LS44OC0xLjQ0MyAxLjAzOGEuMy4zIDAgMCAxLS40Ny0uMzA1bC4zNi0xLjczOC0xLjQyMi0xLjA1Yy0uMjE2LS4xNjMtLjEyMy0uNTEuMTQ0LS41MzhsMS43NjMtLjE5Ni41NTctMS42ODVjLjA4Ny0uMjU2LjQ0Ni0uMjc3LjU2LS4wM2wuNzMgMS42MiAxLjc3LjAwNGMuMjggMCAuNDA2LjMzOC4yMDMuNTJaIiBmaWxsPSIjOEE4QTk4Ii8+PC9zdmc+Cg==" alt="" />
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="value">
+              <div>{totalOdds}x</div>
+            </div>
+            <div class="label">Total odds</div>
+          </div>
+          <div class="item">
+            <div class="value">
+              <div>{payoutValue} {asset}</div>
+              <div class="assetIcon assetIcon-{asset}"></div>
+            </div>
+            <div class="label">{payoutLabel}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

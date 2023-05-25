@@ -79,9 +79,48 @@ generateImage({
 
 ### Result
 
-<p>
-  <img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/bet-og/example.jpeg" width="600" />
+<img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/combo-bet-og/example.jpeg" width="600" />
 </p>
+</details>
+
+<details>
+<summary><b>Combo Bet Opengraph</b></summary>
+<p>
+
+```typescript
+import { generateImage } from '@azuro-org/images-generator';
+import template from '@azuro-org/images-generator/lib/templates/combo-bet-og';
+
+generateImage({
+  template,
+  props: {
+    title: 'Decentralized betting is awesome!',
+    data: {
+      totalOdds: 1.57,
+      possiblePayout: 1017.17,
+      asset: 'USDT',
+    }
+  },
+})
+
+// or (for "Winning" label)
+
+generateImage({
+  template,
+  props: {
+    title: 'Decentralized betting is awesome!',
+    data: {
+      totalOdds: 1.57,
+      payout: 500,
+      asset: 'USDT',
+    }
+  },
+})
+```
+
+### Result
+
+<img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/bet-og/example.jpeg" width="600" />
 </p>
 </details>
 
@@ -118,9 +157,7 @@ generateImage({
 
 ### Result
 
-<p>
-  <img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/bet-nft/example.png" width="255" />
-</p>
+<img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/bet-nft/example.png" width="255" />
 </p>
 </details>
 
@@ -143,9 +180,7 @@ generateImage({
 
 ### Result
 
-<p>
-  <img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/freebet/example.png" width="416" />
-</p>
+<img src="https://github.com/Azuro-protocol/images-generator/raw/main/src/templates/freebet/example.png" width="416" />
 </p>
 </details>
 
