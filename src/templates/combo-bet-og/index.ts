@@ -10,7 +10,7 @@ type OnlyOne<T, Keys extends keyof T = keyof T> =
 }[Keys]
 
 export type Props = {
-  title: 'USDT' | 'XDAI'
+  title: string
   data: {
     totalOdds: string | number
     asset: string
@@ -41,7 +41,8 @@ const template: Template = {
       .replace('{totalOdds}', String(totalOdds))
       .replace('{payoutValue}', String(payout || possiblePayout))
       .replace('{payoutLabel}', payout ? 'Winning' : 'Possible win')
-      .replace(/\{asset}/g, asset.toUpperCase())
+      .replace('{asset}', asset)
+      .replace('{assetIcon}', asset.toUpperCase())
   }
 }
 
