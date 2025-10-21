@@ -9,6 +9,9 @@
     "declaration": true,
     "esModuleInterop": true
   },
+  "ts-node": {
+    "esm": true
+  },
   "include": [
     "src"
   ],
