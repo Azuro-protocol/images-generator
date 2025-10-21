@@ -22,8 +22,6 @@ export const downloadImage = async (url: string) => {
   }
   catch (err) {
     console.error(err)
-    // empty pixel
-
   }
 
   return `data:image/png;base64,${base64}`

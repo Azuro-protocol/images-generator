@@ -31,11 +31,11 @@ export type Props = {
   currentOdds: string
 }
 
-const template: Template = {
+const template: Template<Props> = {
   width: 510,
   height: 510,
   type: 'png',
-  html: async (props: Props) => {
+  html: async (props) => {
     const { type, sport, league, team1, team2, date, betAmount, outcome, betOdds, currentOdds } = props
 
     const html = getFile(path.resolve(__dirname, 'index.html'))

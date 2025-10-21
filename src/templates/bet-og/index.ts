@@ -17,12 +17,12 @@ export type Props = {
   }
 }
 
-const template: Template = {
+const template: Template<Props> = {
   width: 600,
   height: 315,
   type: 'jpeg',
   scaleFactor: 2,
-  html: async (props: Props) => {
+  html: async (props) => {
     const { title, game } = props
     const { country, league, participants, startsAt } = game
 

@@ -1,5 +1,5 @@
-const { generateImage } = require('../lib')
-const template = require('../lib/templates/freebet')
+import { generateImage } from '../lib';
+import template from '../lib/templates/freebet';
 
 generateImage({
   template,

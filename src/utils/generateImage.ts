@@ -12,17 +12,15 @@ type PuppeteerInitialOptions = {
   args: string[]
 }
 
-type GenerateImageResult<T> = T extends { output: string } ? void : (string | Buffer)
-
-type GenerateImageProps = {
-  template: Template
+type GenerateImageProps<P> = {
+  template: Template<P>
   output?: string // output filepath
   filename?: string
-  props: any
+  props: P
   modifyPuppeteerOptions?(options: PuppeteerInitialOptions): PuppeteerOptions
 }
 
-export default async function generateImage<T extends GenerateImageProps>(props: T): Promise<GenerateImageResult<T> | undefined> {
+export default async function generateImage<P>(props: GenerateImageProps<P>): Promise<Uint8Array | undefined> {
   const {
     output,
     filename = 'image',
@@ -94,7 +92,6 @@ export default async function generateImage<T extends GenerateImageProps>(props:
     await page.close()
     await browser.close()
 
-    // @ts-ignore
     return imageBuffer
   }
 }

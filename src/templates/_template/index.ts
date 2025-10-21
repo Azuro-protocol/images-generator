@@ -7,11 +7,11 @@ export type Props = {
   /* your props here */
 }
 
-const template: Template = {
+const template: Template<Props> = {
   width: 800,
   height: 400,
   type: 'png',
-  html: async (props: Props) => {
+  html: async (props) => {
     const { /* your props here */ } = props
 
     // all file paths should be joined with using __dirname!

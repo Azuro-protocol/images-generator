@@ -1,5 +1,5 @@
-const { generateImage } = require('../lib')
-const template = require('../lib/templates/combo-bet-og')
+import { generateImage } from '../lib';
+import template from '../lib/templates/combo-bet-og';
 
 generateImage({
   template,

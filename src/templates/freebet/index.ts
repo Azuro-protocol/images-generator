@@ -8,12 +8,12 @@ export type Props = {
   date: string
 }
 
-const template: Template = {
+const template: Template<Props> = {
   width: 416,
   height: 250,
   type: 'jpeg',
   scaleFactor: 2,
-  html: async (props: Props) => {
+  html: async (props) => {
     const { amount, date } = props
 
     const html = getFile(path.resolve(__dirname, 'index.html'))

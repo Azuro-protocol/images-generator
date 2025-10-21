@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Mona+Sans:wdth,wght@75..125,700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      color: #000;
+    }
+
+    html, body {
+      margin: 0;
+      width: fit-content;
+    }
+
+    .mona-sans {
+      font-family: "Mona Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .flex-1 {
+      flex: 1 1 0;
+    }
+
+    .flex-auto {
+      flex: 1 1 auto;
+    }
+
+    .flex-none {
+      flex: none;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .items-start {
+      align-items: flex-start;
+    }
+
+    .items-end {
+      align-items: flex-end;
+    }
+
+    .items-baseline {
+      align-items: baseline;
+    }
+
+    .items-stretch {
+      align-items: stretch;
+    }
+
+    .self-auto {
+      align-self: auto;
+    }
+
+    .self-start {
+      align-self: flex-start;
+    }
+
+    .self-end {
+      align-self: flex-end;
+    }
+
+    .self-center {
+      align-self: center;
+    }
+
+    .self-stretch {
+      align-self: stretch;
+    }
+
+    .justify-around {
+      justify-content: space-around;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .justify-start {
+      justify-content: flex-start;
+    }
+
+    .justify-end {
+      justify-content: flex-end;
+    }
+
+    .flex-row {
+      flex-direction: row;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .flex-col-reverse {
+      flex-direction: column-reverse;
+    }
+
+    .text-upper {
+      text-transform: uppercase;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .card {
+      background: --card-bg-color;
+      width: 1200px;
+      height: 800px;
+      padding: 32px 32px 26px;
+      position: relative;
+    }
+
+    .logo {
+      height: 38px;
+      width: 266px;
+      display: block;
+    }
+
+    .trend {
+      /* margin-top: 108px; */
+    }
+
+    .trend__img {
+      margin-right: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      overflow: hidden;
+    }
+
+    .trend__img > img {
+      width: 100%;
+    }
+
+    .trend__title {
+      font-size: 32px;
+      line-height: 100%;
+    }
+
+    .trend__badge {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 6px 12px 8px 8px;
+      border-radius: 5px;
+      font-size: 24px;
+      line-height: 100%;
+      margin-top: 10px;
+    }
+
+    .pnl {
+      margin-top: 22px;
+      font-size: 120px;
+      line-height: 100%;
+      font-weight: 700;
+    }
+
+    .code__text {
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 24px;
+      line-height: 100%;
+      opacity: 50%;
+    }
+
+    .code__link {
+      margin-top: 4px;
+      font-size: 28px;
+      line-height: 37px;
+    }
+
+    .bg {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      height: 100%;
+    }
+
+    .arrow {
+      width: 24px;
+      height: 24px;
+      margin-top: 2px;
+      margin-bottom: -3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card flex flex-col justify-between">
+    <img class="bg" src={bgImage} alt="">
+    <img src="{logo}" class="logo" alt="">
+    <div>
+      <div class="trend flex items-center">
+        <div class="trend__img flex items-center justify-center">
+          <img src="{trendImage}" alt="">
+        </div>
+        <div>
+          <div class="trend__title">{trendTitle}</div>
+          <div class="trend__badge">
+            <img class="arrow" src="{arrowImage}" alt="">
+            <span>{positionInfo}</span>
+          </div>
+        </div>
+      </div>
+      <div class="pnl">{pnl}%</div>
+    </div>
+    <div class="code">
+      <div class="code__text">Referral code</div>
+      <div class="code__link">{refferalLink}</div>
+    </div>
+  </div>
+</body>
+</html>

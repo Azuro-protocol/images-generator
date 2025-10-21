@@ -1,5 +1,5 @@
-const { generateImage } = require('../lib')
-const template = require('../lib/templates/bet-nft')
+import { generateImage } from '../lib';
+import template from '../lib/templates/bet-nft';
 
 generateImage({
   template,
