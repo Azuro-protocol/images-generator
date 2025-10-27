@@ -5,18 +5,19 @@ import { type Template, getFile, getBase64Image, downloadImage } from '../../uti
 
 const cardTypes = {
   'profit': {
-    bg: 'images/profit.png',
+    rightImg: 'images/profit.png',
     arrow: 'images/arrow-up.png',
     bgColor: '#72FF4B',
   },
   'loss': {
-    bg: 'images/loss.png',
+    rightImg: 'images/loss.png',
     arrow: 'images/arrow-down.png',
     bgColor: '#FF604B',
   }
 }
 
 export type Props = {
+  type: 'obama' | 'drake' | 'crash' | 'tramp' | 'elon' | 'lewis' | 'mark'
   trend: {
     image: string
     title: string
@@ -34,16 +35,18 @@ const template: Template<Props> = {
   height: 445,
   type: 'jpeg',
   html: async (props) => {
-    const { trend, pnl, position, referralUrl } = props
+    const { type, trend, pnl, position, referralUrl } = props
 
     const isProfit = pnl > 0
-    const { bg, arrow, bgColor } = isProfit ? cardTypes.profit : cardTypes.loss
+    const { rightImg, arrow, bgColor } = isProfit ? cardTypes.profit : cardTypes.loss
     const { leverage, isLong } = position
 
     const html = getFile(path.join(__dirname, 'index.html'))
 
     const logo = getBase64Image(path.resolve(__dirname, 'images/logo.png'))
-    const bgImage = getBase64Image(path.resolve(__dirname, bg))
+    const bgImage = getBase64Image(path.resolve(__dirname, 'images/bg.png'))
+    const rightImage = getBase64Image(path.resolve(__dirname, rightImg))
+    const personImage = getBase64Image(path.resolve(__dirname, `images/${type}.png`))
     const arrowImage = getBase64Image(path.resolve(__dirname, arrow))
 
     const trendImage = await downloadImage(trend.image)
@@ -53,7 +56,9 @@ const template: Template<Props> = {
     return html
       .replace('{logo}', logo)
       .replace('--card-bg-color', bgColor)
-      .replace('{bgImage}', bgImage)
+      .replace('{bgImg}', bgImage)
+      .replace('{rightImg}', rightImage)
+      .replace('{personImg}', personImage)
       .replace('{trendImage}', trendImage)
       .replace('{trendTitle}', trend.title)
       .replace('{positionInfo}', positionInfo)

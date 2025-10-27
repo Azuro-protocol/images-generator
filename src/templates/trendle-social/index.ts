@@ -5,29 +5,24 @@ import { type Template, getFile, getBase64Image, downloadImage } from '../../uti
 
 const cardTypes = {
   'business': {
-    title: 'Long chaos,</br> short compliance',
     bottomImg: 'images/business.png',
-    bgColor: '#DEFF4B'
+    bgImg: 'images/bg-business.png',
   },
   'culture': {
-    title: 'Trendlines?</br> I trade punchlines',
     bottomImg: 'images/culture.png',
-    bgColor: '#4BFF51'
+    bgImg: 'images/bg-culture.png',
   },
   'crypto': {
-    title: 'The Market</br> Whisperer',
     bottomImg: 'images/crypto.png',
-    bgColor: '#FF5188'
+    bgImg: 'images/bg-crypto.png',
   },
   'politics': {
-    title: 'The Geopolitical</br> Degen',
     bottomImg: 'images/politics.png',
-    bgColor: '#51C2FF'
+    bgImg: 'images/bg-politics.png',
   },
   'fomo': {
-    title: 'FOMO Forward',
     bottomImg: 'images/fomo.png',
-    bgColor: '#D951FF'
+    bgImg: 'images/bg-fomo.png',
   },
 } as const
 
@@ -43,24 +38,22 @@ const template: Template<Props> = {
   type: 'jpeg',
   html: async (props) => {
     const { type, avatarUrl, username } = props
-    const { bottomImg, title, bgColor } = cardTypes[type]
+    const { bottomImg, bgImg } = cardTypes[type]
 
     const html = getFile(path.join(__dirname, 'index.html'))
 
-    const logo = getBase64Image(path.resolve(__dirname, 'images/logo.png'))
-    const bgImage = getBase64Image(path.resolve(__dirname, 'images/bg.png'))
+    const stampImage = getBase64Image(path.resolve(__dirname, 'images/stamp.png'))
     const bottomImage = getBase64Image(path.resolve(__dirname, bottomImg))
+    const bgImage = getBase64Image(path.resolve(__dirname, bgImg))
 
     const avatarImage = await downloadImage(avatarUrl)
 
     return html
-      .replace('{title}', title)
-      .replace('{logo}', logo)
       .replace('{bgImg}', bgImage)
       .replace('{bottomImg}', bottomImage)
+      .replace('{stampImg}', stampImage)
       .replace('{avatar}', avatarImage)
       .replace('{username}', username)
-      .replace('--card-bg-color', bgColor)
   }
 }
 

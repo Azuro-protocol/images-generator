@@ -7,7 +7,7 @@ generateImage({
   filename: 'trendle-social-business',
   props: {
     type: 'business',
-    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhLrq4s4xwmnVwnLBDcBPH7CZY4SSto1DoDA&s',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1961470943978487808/NmRlg5z7_normal.png',
     username: '@j0hnwang'
   }
 })
@@ -18,7 +18,7 @@ generateImage({
   filename: 'trendle-social-culture',
   props: {
     type: 'culture',
-    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhLrq4s4xwmnVwnLBDcBPH7CZY4SSto1DoDA&s',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1961470943978487808/NmRlg5z7_normal.png',
     username: '@j0hnwang'
   }
 })
@@ -29,7 +29,7 @@ generateImage({
   filename: 'trendle-social-crypto',
   props: {
     type: 'crypto',
-    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhLrq4s4xwmnVwnLBDcBPH7CZY4SSto1DoDA&s',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1961470943978487808/NmRlg5z7_normal.png',
     username: '@j0hnwang'
   }
 })
@@ -40,7 +40,7 @@ generateImage({
   filename: 'trendle-social-politics',
   props: {
     type: 'politics',
-    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhLrq4s4xwmnVwnLBDcBPH7CZY4SSto1DoDA&s',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1961470943978487808/NmRlg5z7_normal.png',
     username: '@j0hnwang'
   }
 })
@@ -51,7 +51,7 @@ generateImage({
   filename: 'trendle-social-fomo',
   props: {
     type: 'fomo',
-    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhLrq4s4xwmnVwnLBDcBPH7CZY4SSto1DoDA&s',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1961470943978487808/NmRlg5z7_normal.png',
     username: '@j0hnwang'
   }
 })

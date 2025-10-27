@@ -190,7 +190,7 @@
       line-height: 37px;
     }
 
-    .bg {
+    .right-img {
       position: absolute;
       top: 0px;
       right: 0px;
@@ -203,11 +203,27 @@
       margin-top: 2px;
       margin-bottom: -3px;
     }
+
+    .person-img {
+      position: absolute;
+      height: 100%;
+      top: 0px;
+      right: 0px;
+      mix-blend-mode: multiply;
+    }
+
+    .bg-img {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
   <div class="card flex flex-col justify-between">
-    <img class="bg" src={bgImage} alt="">
+    <img class="bg-img" src={bgImg} alt="">
+    <img class="right-img" src={rightImg} alt="">
+    <img class="person-img" src={personImg} alt="">
     <img src="{logo}" class="logo" alt="">
     <div>
       <div class="trend flex items-center">
