@@ -17,7 +17,7 @@ const cardTypes = {
 }
 
 export type Props = {
-  type: 'obama' | 'drake' | 'crash' | 'tramp' | 'elon' | 'lewis' | 'mark'
+  type: 'obama' | 'drake' | 'crash' | 'sydney' | 'tramp' | 'elon' | 'lewis' | 'mark'
   trend: {
     image: string
     title: string
