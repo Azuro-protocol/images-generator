@@ -8,15 +8,15 @@ generateImage({
   props: {
     type: 'obama',
     trend: {
-      image: 'https://content.azuro.org/a2527335-e967-4d23-857a-3de267feb4b1.png',
-      title: 'Elon Musk',
+      image: "https://content.azuro.org/cc08578c-0334-4598-9d9d-15f8dc408e02.png",
+      title: 'Artificial intelligence',
     },
     position: {
       leverage: 2,
       isLong: true,
     },
     pnl: -48.5,
-    referralUrl: 'app.trendle.fi/i/abc831'
+    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -27,15 +27,15 @@ generateImage({
   props: {
     type: 'drake',
     trend: {
-      image: 'https://content.azuro.org/a2527335-e967-4d23-857a-3de267feb4b1.png',
-      title: 'Elon Musk',
+      image: "https://content.azuro.org/cc08578c-0334-4598-9d9d-15f8dc408e02.png",
+      title: 'Artificial intelligence',
     },
     position: {
       leverage: 5,
       isLong: false,
     },
     pnl: -23.1,
-    referralUrl: 'app.trendle.fi/i/abc831'
+    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -46,15 +46,15 @@ generateImage({
   props: {
     type: 'crash',
     trend: {
-      image: 'https://content.azuro.org/a2527335-e967-4d23-857a-3de267feb4b1.png',
-      title: 'Elon Musk',
+      image: "https://content.azuro.org/cc08578c-0334-4598-9d9d-15f8dc408e02.png",
+      title: 'Artificial intelligence',
     },
     position: {
       leverage: 5,
       isLong: false,
     },
     pnl: -23.1,
-    referralUrl: 'app.trendle.fi/i/abc831'
+    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -65,15 +65,15 @@ generateImage({
   props: {
     type: 'sydney',
     trend: {
-      image: 'https://content.azuro.org/a2527335-e967-4d23-857a-3de267feb4b1.png',
-      title: 'Elon Musk',
+      image: "https://content.azuro.org/cc08578c-0334-4598-9d9d-15f8dc408e02.png",
+      title: 'Artificial intelligence',
     },
     position: {
       leverage: 5,
       isLong: false,
     },
     pnl: -23.1,
-    referralUrl: 'app.trendle.fi/i/abc831'
+    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -84,15 +84,15 @@ generateImage({
   props: {
     type: 'tramp',
     trend: {
-      image: 'https://content.azuro.org/a2527335-e967-4d23-857a-3de267feb4b1.png',
-      title: 'Elon Musk',
+      image: "https://content.azuro.org/cc08578c-0334-4598-9d9d-15f8dc408e02.png",
+      title: 'Artificial intelligence',
     },
     position: {
       leverage: 5,
       isLong: false,
     },
     pnl: 13.1,
-    referralUrl: 'app.trendle.fi/i/abc831'
+    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -103,15 +103,15 @@ generateImage({
   props: {
     type: 'elon',
     trend: {
-      image: 'https://content.azuro.org/a2527335-e967-4d23-857a-3de267feb4b1.png',
-      title: 'Elon Musk',
+      image: "https://content.azuro.org/cc08578c-0334-4598-9d9d-15f8dc408e02.png",
+      title: 'Artificial intelligence',
     },
     position: {
       leverage: 5,
       isLong: false,
     },
     pnl: 13.1,
-    referralUrl: 'app.trendle.fi/i/abc831'
+    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -122,15 +122,15 @@ generateImage({
   props: {
     type: 'lewis',
     trend: {
-      image: 'https://content.azuro.org/a2527335-e967-4d23-857a-3de267feb4b1.png',
-      title: 'Elon Musk',
+      image: "https://content.azuro.org/cc08578c-0334-4598-9d9d-15f8dc408e02.png",
+      title: 'Artificial intelligence',
     },
     position: {
       leverage: 5,
       isLong: false,
     },
     pnl: 13.1,
-    referralUrl: 'app.trendle.fi/i/abc831'
+    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -141,14 +141,14 @@ generateImage({
   props: {
     type: 'mark',
     trend: {
-      image: 'https://content.azuro.org/a2527335-e967-4d23-857a-3de267feb4b1.png',
-      title: 'Elon Musk',
+      image: "https://content.azuro.org/cc08578c-0334-4598-9d9d-15f8dc408e02.png",
+      title: 'Artificial intelligence',
     },
     position: {
       leverage: 5,
       isLong: false,
     },
     pnl: 13.1,
-    referralUrl: 'app.trendle.fi/i/abc831'
+    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
