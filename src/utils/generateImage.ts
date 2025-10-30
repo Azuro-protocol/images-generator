@@ -45,6 +45,7 @@ export default async function generateImage<P>(props: GenerateImageProps<P>): Pr
     devtools: false,
     args: [
       '--no-sandbox',
+      '--disable-setuid-sandbox',
       '--disable-gpu',
       '--disable-accelerated-video-decode',
       // '--allow-file-access-from-files',
@@ -58,15 +59,14 @@ export default async function generateImage<P>(props: GenerateImageProps<P>): Pr
   const browser = await puppeteer.launch(launchOptions)
   const page = await browser.newPage()
 
+  page.setDefaultNavigationTimeout(0)
   await page.setViewport({
     width,
     height,
     deviceScaleFactor: scaleFactor,
   })
 
-  await page.goto(`data:text/html;charset=UTF-8,${encodeURIComponent(html)}`, {
-    waitUntil: 'networkidle0',
-  })
+  await page.setContent(html, { waitUntil: 'domcontentloaded' })
 
   const content = await page.$('body')
 
