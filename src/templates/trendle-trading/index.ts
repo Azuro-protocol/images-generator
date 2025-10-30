@@ -6,12 +6,10 @@ import { type Template, getFile, getBase64Image, downloadImage } from '../../uti
 const cardTypes = {
   'profit': {
     rightImg: 'images/profit.png',
-    arrow: 'images/arrow-up.png',
     bgColor: '#72FF4B',
   },
   'loss': {
     rightImg: 'images/loss.png',
-    arrow: 'images/arrow-down.png',
     bgColor: '#FF604B',
   }
 }
@@ -38,7 +36,7 @@ const template: Template<Props> = {
     const { type, trend, pnl, position, referralUrl } = props
 
     const isProfit = pnl > 0
-    const { rightImg, arrow, bgColor } = isProfit ? cardTypes.profit : cardTypes.loss
+    const { rightImg, bgColor } = isProfit ? cardTypes.profit : cardTypes.loss
     const { leverage, isLong } = position
 
     const html = getFile(path.join(__dirname, 'index.html'))
@@ -47,7 +45,7 @@ const template: Template<Props> = {
     const bgImage = getBase64Image(path.resolve(__dirname, 'images/bg.png'))
     const rightImage = getBase64Image(path.resolve(__dirname, rightImg))
     const personImage = getBase64Image(path.resolve(__dirname, `images/${type}.png`))
-    const arrowImage = getBase64Image(path.resolve(__dirname, arrow))
+    const arrowImage = getBase64Image(path.resolve(__dirname, isLong ? 'images/arrow-up.png' : 'images/arrow-down.png'))
 
     const trendImage = await downloadImage(trend.image)
 
