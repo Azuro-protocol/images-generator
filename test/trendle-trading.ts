@@ -16,7 +16,6 @@ generateImage({
       isLong: true,
     },
     pnl: -48.5,
-    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -35,7 +34,6 @@ generateImage({
       isLong: false,
     },
     pnl: -23.1,
-    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -54,7 +52,6 @@ generateImage({
       isLong: false,
     },
     pnl: -23.1,
-    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -73,7 +70,6 @@ generateImage({
       isLong: false,
     },
     pnl: -23.1,
-    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -92,7 +88,6 @@ generateImage({
       isLong: false,
     },
     pnl: 13.1,
-    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -111,7 +106,6 @@ generateImage({
       isLong: false,
     },
     pnl: 13.1,
-    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -130,7 +124,6 @@ generateImage({
       isLong: false,
     },
     pnl: 13.1,
-    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
 
@@ -149,6 +142,5 @@ generateImage({
       isLong: false,
     },
     pnl: 13.1,
-    referralUrl: 'dev-app.trendle.fi/?inviteCode=98a746'
   }
 })
