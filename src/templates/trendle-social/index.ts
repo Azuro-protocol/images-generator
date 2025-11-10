@@ -30,14 +30,17 @@ export type Props = {
   type: keyof typeof cardTypes
   avatarUrl: string
   username: string
+  isWide?: boolean
 }
+
+// 2020
 
 const template: Template<Props> = {
   width: 850,
   height: 1060,
   type: 'jpeg',
   html: async (props) => {
-    const { type, avatarUrl, username } = props
+    const { type, avatarUrl, username, isWide = true } = props
     const { bottomImg, bgImg } = cardTypes[type]
 
     const html = getFile(path.join(__dirname, 'index.html'))
@@ -49,7 +52,9 @@ const template: Template<Props> = {
     const avatarImage = await downloadImage(avatarUrl)
 
     return html
+      .replace('--wrapper-width', `${isWide ? 2020 : 850}px`)
       .replace('{bgImg}', bgImage)
+      .replace('{wrapperImg}', bottomImage)
       .replace('{bottomImg}', bottomImage)
       .replace('{stampImg}', stampImage)
       .replace('{avatar}', avatarImage)

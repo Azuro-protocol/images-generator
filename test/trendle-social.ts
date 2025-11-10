@@ -15,6 +15,18 @@ generateImage({
 generateImage({
   template,
   output: './test/images',
+  filename: 'trendle-social-business-narrow',
+  props: {
+    type: 'business',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1961470943978487808/NmRlg5z7_normal.png',
+    username: '@j0hnwang',
+    isWide: false,
+  }
+})
+
+generateImage({
+  template,
+  output: './test/images',
   filename: 'trendle-social-culture',
   props: {
     type: 'culture',

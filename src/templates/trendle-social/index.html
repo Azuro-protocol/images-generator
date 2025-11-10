@@ -127,17 +127,18 @@
     }
 
     .card {
-      width: 600px;
-      height: 749px;
-      padding-top: 183px;
+      width: 850px;
+      height: 1060px;
+      padding-top: 260px;
       position: relative;
+      z-index: 1;
     }
 
     .bg {
       position: absolute;
       mix-blend-mode: difference;
-      top: 0;
-      left: 0;
+      top: 0px;
+      left: 0px;
       width: 100%;
       height: 100%;
     }
@@ -145,18 +146,18 @@
     .bottom-img {
       position: absolute;
       mix-blend-mode: multiply;
-      bottom: 0;
-      left: 0;
+      bottom: 0px;
+      left: 0px;
       width: 100%;
     }
 
     .avatar {
-      width: 212px;
-      height: 212px;
+      width: 300px;
+      height: 300px;
       border-radius: 100%;
-      border: 2.47px solid white;
+      border: 3.5px solid white;
       overflow: hidden;
-      margin: 28px auto 0;
+      margin: 40px auto 0;
       position: relative;
       z-index: 10;
     }
@@ -168,36 +169,55 @@
     .username {
       background-color: #111;
       color: #fff;
-      padding: 5.6px 14px 9.2px;
-      margin: -9.9px auto 0;
+      padding: 8px 20px 13px;
+      margin: -14px auto 0;
       width: fit-content;
       position: relative;
       z-index: 10;
-      font-size: 25.4px;
+      font-size: 36px;
       line-height: 100%;
       font-weight: 400;
     }
 
     .stamp-img {
-      width: 169px;
-      height: 169px;
+      width: 240px;
+      height: 240px;
       position: absolute;
-      top: 191px;
-      right: 99px;
+      top: 270px;
+      right: 140px;
       z-index: 20;
+    }
+
+    .wrapper {
+      width: --wrapper-width;
+      position: relative;
+      background: #393939;
+    }
+
+    .wrapper__img {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+      mix-blend-mode: multiply;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="{bgImg}" alt="" class="bg">
-    <img src="{bottomImg}" alt="" class="bottom-img">
-    <img src="{titleImg}" alt="" class="title-img">
-    <div class="avatar flex items-center justify-center">
-      <img src="{avatar}" alt="">
+  <div class="wrapper flex justify-center">
+    <img src="{wrapperImg}" alt="" class="wrapper__img">
+    <div class="card">
+      <img src="{bgImg}" alt="" class="bg">
+      <img src="{bottomImg}" alt="" class="bottom-img">
+      <img src="{titleImg}" alt="" class="title-img">
+      <div class="avatar flex items-center justify-center">
+        <img src="{avatar}" alt="">
+      </div>
+      <img src="{stampImg}" alt="" class="stamp-img">
+      <div class="username geist-mono">{username}</div>
     </div>
-    <img src="{stampImg}" alt="" class="stamp-img">
-    <div class="username geist-mono">{username}</div>
   </div>
 </body>
 </html>
