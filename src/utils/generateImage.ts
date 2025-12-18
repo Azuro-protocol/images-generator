@@ -82,7 +82,7 @@ export default async function generateImage<P>(props: GenerateImageProps<P>): Pr
 
     const filePath = `${output.replace(/\/$/, '')}/${filename.replace(/\..+$/, '')}.${type}`
 
-    await content!.screenshot({ path: filePath })
+    await content!.screenshot({ path: filePath, type })
     await page.close()
     await browser.close()
   }

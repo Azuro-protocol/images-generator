@@ -203,10 +203,19 @@
       height: 100%;
       mix-blend-mode: multiply;
     }
+
+    .monad .bottom-img {
+      mix-blend-mode: unset;
+    }
+
+    .monad .username {
+      box-shadow: 0px -4px 23px 0px rgba(136, 0, 255, 1) inset;
+      border-radius: 40px;
+    }
   </style>
 </head>
 <body>
-  <div class="wrapper flex justify-center">
+  <div class="wrapper flex justify-center {additionalClassName}">
     <img src="{wrapperImg}" alt="" class="wrapper__img">
     <div class="card">
       <img src="{bgImg}" alt="" class="bg">
