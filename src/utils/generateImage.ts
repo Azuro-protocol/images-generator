@@ -66,7 +66,10 @@ export default async function generateImage<P>(props: GenerateImageProps<P>): Pr
     deviceScaleFactor: scaleFactor,
   })
 
-  await page.setContent(html, { waitUntil: 'domcontentloaded' })
+  await page.setContent(html, { waitUntil: 'networkidle0' })
+  
+  // Wait for fonts to load
+  await page.evaluate(() => document.fonts.ready)
 
   const content = await page.$('body')
 
