@@ -25,7 +25,7 @@ const cardTypes = {
     title: 'Top 1%',
     subtitle: 'of Trendle traders <br> by ',
     color: '#00000099',
-    additionalClassName: ''
+    additionalClassName: 'gold'
   },
   'silver': {
     bgImg: 'images/silver.png',
@@ -33,7 +33,7 @@ const cardTypes = {
     title: 'Top 3%',
     subtitle: 'of Trendle traders <br> by ',
     color: '#00000099',
-    additionalClassName: ''
+    additionalClassName: 'silver'
   },
   'bronze': {
     bgImg: 'images/bronze.png',
@@ -41,7 +41,7 @@ const cardTypes = {
     title: 'Top 10%',
     subtitle: 'of Trendle traders <br> by ',
     color: '#00000099',
-    additionalClassName: ''
+    additionalClassName: 'bronze'
   },
 } as const
 
