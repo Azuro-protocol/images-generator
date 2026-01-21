@@ -52,6 +52,12 @@ const cardTypes = {
     stampImg: 'images/stamp-monad.png',
     additionalClassName: 'monad'
   },
+  'monad-4': {
+    bottomImg: null,
+    bgImg: 'images/bg-monad-1.png',
+    stampImg: 'images/stamp-monad.png',
+    additionalClassName: 'monad'
+  },
 } as const
 
 export type Props = {

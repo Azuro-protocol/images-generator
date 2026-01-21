@@ -49,6 +49,17 @@ generateImage({
 generateImage({
   template,
   output: './test/images',
+  filename: 'trendle-social-monad-4',
+  props: {
+    type: 'monad-4',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1961470943978487808/NmRlg5z7_normal.png',
+    username: '@j0hnwang',
+  }
+})
+
+generateImage({
+  template,
+  output: './test/images',
   filename: 'trendle-social-business-narrow',
   props: {
     type: 'business',
