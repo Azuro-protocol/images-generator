@@ -14,8 +14,9 @@ const cardTypes = {
   }
 }
 
+type Person = 'obama' | 'drake' | 'crash' | 'sydney' | 'tramp' | 'elon' | 'lewis' | 'mark' | 'powell' | 'macron' | 'arnold' | 'person-1' | 'tramp-2' | 'elon-2' | 'person-2' | 'taylor'
 export type Props = {
-  type: 'obama' | 'drake' | 'crash' | 'sydney' | 'tramp' | 'elon' | 'lewis' | 'mark'
+  type: Person
   trend: {
     image: string
     title: string
@@ -23,6 +24,8 @@ export type Props = {
   position: {
     leverage: number
     isLong: boolean
+    openLevel: number
+    exitLevel: number | undefined
   }
   pnl: number
 }
@@ -36,7 +39,7 @@ const template: Template<Props> = {
 
     const isProfit = pnl > 0
     const { rightImg, bgColor } = isProfit ? cardTypes.profit : cardTypes.loss
-    const { leverage, isLong } = position
+    const { leverage, isLong, openLevel, exitLevel } = position
 
     const html = getFile(path.join(__dirname, 'index.html'))
 
@@ -61,6 +64,9 @@ const template: Template<Props> = {
       .replace('{positionInfo}', positionInfo)
       .replace('{arrowImage}', arrowImage)
       .replace('{pnl}', pnl > 0 ? `+${pnl}` : `${pnl}`)
+      .replace('{openLevel}', String(openLevel))
+      .replace('{exitLevel}', String(exitLevel || ''))
+      .replace('{exitLevelClass}', exitLevel ? '' : 'none')
   }
 }
 

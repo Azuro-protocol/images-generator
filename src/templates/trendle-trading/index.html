@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Mona+Sans:wdth,wght@75..125,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Mona+Sans:wdth,wght@75..125,700&display=swap"
+    rel="stylesheet">
   <style>
     html {
       font-family: 'Inter', sans-serif;
@@ -11,7 +14,8 @@
       color: #000;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       width: fit-content;
     }
@@ -28,6 +32,10 @@
 
     .flex {
       display: flex;
+    }
+
+    .none {
+      display: none;
     }
 
     .flex-wrap {
@@ -152,7 +160,7 @@
       overflow: hidden;
     }
 
-    .trend__img > img {
+    .trend__img>img {
       width: 100%;
     }
 
@@ -206,8 +214,30 @@
       left: 0px;
       width: 100%;
     }
+
+    .level-wrapper {
+      margin-top: 30px;
+    }
+
+    .level-title {
+      opacity: 50%;
+      color: #000000CC;
+      font-size: 24px;
+      line-height: 100%;
+    }
+
+    .level-content {
+      margin-top: 6px;
+      font-size: 28px;
+      line-height: 37.86px;
+    }
+
+    .level-box {
+      margin-left: 125px;
+    }
   </style>
 </head>
+
 <body>
   <div class="card flex flex-col justify-between">
     <img class="bg-img" src={bgImg} alt="">
@@ -228,7 +258,18 @@
         </div>
       </div>
       <div class="pnl">{pnl}%</div>
+      <div class="level-wrapper flex items-center">
+        <div>
+          <div class="level-title">Entry level:</div>
+          <div class="level-content">{openLevel}</div>
+        </div>
+        <div class="level-box {exitLevelClass}">
+          <div class="level-title">Exit level:</div>
+          <div class="level-content">{exitLevel}</div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
+
 </html>
