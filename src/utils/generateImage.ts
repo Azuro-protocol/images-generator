@@ -48,7 +48,27 @@ export default async function generateImage<P>(props: GenerateImageProps<P>): Pr
       '--disable-setuid-sandbox',
       '--disable-gpu',
       '--disable-accelerated-video-decode',
-      // '--allow-file-access-from-files',
+      '--disable-dev-shm-usage',
+      '--disable-web-security',
+      '--disable-plugins',
+      '--disable-extensions',
+      '--disable-background-networking',
+      '--disable-background-timer-throttling',
+      '--disable-renderer-backgrounding',
+      '--disable-backgrounding-occluded-windows',
+      '--disable-breakpad',
+      '--disable-component-extensions-with-background-pages',
+      '--disable-features=TranslateUI',
+      '--disable-ipc-flooding-protection',
+      '--disable-hang-monitor',
+      '--disable-prompt-on-repost',
+      '--disable-sync',
+      '--metrics-recording-only',
+      '--no-first-run',
+      '--safebrowsing-disable-auto-update',
+      '--enable-automation',
+      '--password-store=basic',
+      '--use-mock-keychain',
     ],
   }
 
@@ -60,13 +80,31 @@ export default async function generateImage<P>(props: GenerateImageProps<P>): Pr
   const page = await browser.newPage()
 
   page.setDefaultNavigationTimeout(0)
+
+  await page.setCacheEnabled(false);
+  await page.setJavaScriptEnabled(true);
+
+  await page.setRequestInterception(true);
+  page.on('request', (req) => {
+    const resourceType = req.resourceType();
+    
+    // Block only truly unnecessary resources that don't affect rendering
+    // Allow images, stylesheets, scripts, and data URLs
+    if (['font', 'media', 'websocket', 'manifest', 'texttrack'].includes(resourceType)) {
+      req.abort();
+    }
+    else {
+      req.continue();
+    }
+  });
+
   await page.setViewport({
     width,
     height,
     deviceScaleFactor: scaleFactor,
   })
 
-  await page.setContent(html, { waitUntil: 'networkidle0' })
+  await page.setContent(html, { waitUntil: 'domcontentloaded' })
   
   // Wait for fonts to load
   await page.evaluate(() => document.fonts.ready)
@@ -85,12 +123,12 @@ export default async function generateImage<P>(props: GenerateImageProps<P>): Pr
 
     const filePath = `${output.replace(/\/$/, '')}/${filename.replace(/\..+$/, '')}.${type}`
 
-    await content!.screenshot({ path: filePath, type })
+    await content!.screenshot({ path: filePath, type, ...(type === 'jpeg' ? { quality: 85 } : {})})
     await page.close()
     await browser.close()
   }
   else {
-    const imageBuffer = await content!.screenshot({ omitBackground: true, type })
+    const imageBuffer = await content!.screenshot({ omitBackground: true, type, ...(type === 'jpeg' ? { quality: 85 } : {})})
 
     await page.close()
     await browser.close()
