@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Mona+Sans:wdth,wght@75..125,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wdth,wght@0,125,200..900;1,125,200..900&display=swap"
     rel="stylesheet">
   <style>
     html {
@@ -23,6 +25,13 @@
     .mona-sans {
       font-family: "Mona Sans", sans-serif;
       font-optical-sizing: auto;
+      font-style: normal;
+    }
+
+    .geist-mono {
+      font-family: "Geist Mono", monospace;
+      font-optical-sizing: auto;
+      font-weight: 400;
       font-style: normal;
     }
 
@@ -130,22 +139,31 @@
       text-transform: uppercase;
     }
 
+    .text-underline {
+      text-decoration: underline;
+    }
+
     .text-center {
       text-align: center;
+    }
+
+    .text-bold {
+      font-weight: 700;
     }
 
     .card {
       background: --card-bg-color;
       width: 1200px;
-      height: 630px;
-      padding: 48px;
+      height: 675px;
+      padding: 40px 36px 30px;
       position: relative;
     }
 
     .logo {
-      height: 38px;
-      width: 266px;
+      height: 24px;
+      width: 156px;
       display: block;
+      margin-right: 45px;
     }
 
     .trend {
@@ -235,38 +253,28 @@
     .level-box {
       margin-left: 125px;
     }
+
+    .box {
+      background: #0F0F0F;
+      border-radius: 33px;
+      height: 100%;
+      width: fit-content;
+      padding: 30px 30px 55px;
+    }
+
+    .box-bottom {
+      margin-top: 30px;
+    }
   </style>
 </head>
 
 <body>
   <div class="card flex flex-col justify-between">
-    <img class="bg-img" src={bgImg} alt="">
-    <img class="right-img" src={rightImg} alt="">
-    <img class="person-img" src={personImg} alt="">
-    <img src="{logo}" class="logo" alt="">
-    <div>
-      <div class="trend flex items-center">
-        <div class="trend__img flex items-center justify-center">
-          <img src="{trendImage}" alt="">
-        </div>
-        <div>
-          <div class="trend__title">{trendTitle}</div>
-          <div class="trend__badge">
-            <img class="arrow" src="{arrowImage}" alt="">
-            <span>{positionInfo}</span>
-          </div>
-        </div>
-      </div>
-      <div class="pnl">{pnl}%</div>
-      <div class="level-wrapper flex items-center">
-        <div>
-          <div class="level-title">Entry level:</div>
-          <div class="level-content">{openLevel}</div>
-        </div>
-        <div class="level-box {exitLevelClass}">
-          <div class="level-title">Exit level:</div>
-          <div class="level-content">{exitLevel}</div>
-        </div>
+    <img class="person-img" src={trendImage} alt="">
+    <div class="box"></div>
+    <div class="box-bottom flex items-end">
+      <img src="{logo}" class="logo" alt="">
+      <div class="text-upper geist-mono">trade attention on <span class="text-underline text-bold">Trendle.fi</span>
       </div>
     </div>
   </div>
