@@ -122,8 +122,8 @@ class Generator {
       const resourceType = req.resourceType();
       
       // Block only truly unnecessary resources that don't affect rendering
-      // Allow images, stylesheets, scripts, and data URLs
-      if (['font', 'media', 'websocket', 'manifest', 'texttrack'].includes(resourceType)) {
+      // Allow images, stylesheets, scripts, fonts, and data URLs
+      if (['media', 'websocket', 'manifest', 'texttrack'].includes(resourceType)) {
         req.abort();
       }
       else {
