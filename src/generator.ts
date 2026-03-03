@@ -94,7 +94,7 @@ class Generator {
   }
 
   async generate<P>(props: GenerateProps<P>): Promise<Uint8Array> {
-    if (!this.browser || !this.browser.connected) {
+    if (!this.browser) {
       await this.run();
     }
 
