@@ -10,12 +10,27 @@ interface GeneratorOptions {
   args?: string[];
 }
 
+/**
+ * Options for a single image generation.
+ */
 interface GenerateOptions {
+  /** JPEG quality 1–100 (ignored for PNG). Default 85. */
   quality?: number;
+  /** Screenshot the full scrollable page instead of just the viewport. Default false. */
   fullPage?: boolean;
+  /** Wait for document.fonts.ready before taking the screenshot so webfonts are applied. Default true. */
   waitForFonts?: boolean;
+  /** Max ms to wait for content/font loading. Default 2000. */
   waitTimeout?: number;
+  /**
+   * When to consider the page content "loaded" before screenshot.
+   * - `domcontentloaded` – DOM ready, resources (images, fonts) may still load. Fastest. Default.
+   * - `load` – load event fired (images, stylesheets, etc. loaded).
+   * - `networkidle0` – no network requests for 500ms.
+   * - `networkidle2` – at most 2 network requests for 500ms.
+   */
   waitUntil?: 'load' | 'domcontentloaded' | 'networkidle0' | 'networkidle2';
+  /** If true, do not add an extra delay for CSS animations. Default true. */
   skipAnimations?: boolean;
 }
 
@@ -148,7 +163,7 @@ class Generator {
       fullPage = false,
       waitForFonts = true, // Disable by default for speed
       waitTimeout = 2000, // Reduced timeout
-      waitUntil = 'domcontentloaded', // Faster than networkidle0
+      waitUntil = 'load',
       skipAnimations = true, // Skip animation wait by default
     } = options;
 

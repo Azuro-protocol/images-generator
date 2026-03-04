@@ -4,7 +4,12 @@
     "target": "es5",
     "module": "esnext",
     "moduleResolution": "node",
-    "lib": [ "es2017", "es7", "es6", "dom" ],
+    "lib": [
+      "es2021",
+      "es7",
+      "es6",
+      "dom"
+    ],
     "strict": true,
     "declaration": true,
     "esModuleInterop": true

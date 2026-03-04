@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Mona+Sans:wdth,wght@75..125,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;700&family=Inter:wght@500;600&family=Mona+Sans:wdth,wght@125,700&display=swap"
     rel="stylesheet">
   <style>
     html {
@@ -23,6 +25,13 @@
     .mona-sans {
       font-family: "Mona Sans", sans-serif;
       font-optical-sizing: auto;
+      font-style: normal;
+    }
+
+    .geist-mono {
+      font-family: "Geist Mono", monospace;
+      font-optical-sizing: auto;
+      font-weight: 400;
       font-style: normal;
     }
 
@@ -130,60 +139,40 @@
       text-transform: uppercase;
     }
 
+    .text-underline {
+      text-decoration: underline;
+    }
+
     .text-center {
       text-align: center;
+    }
+
+    .text-bold {
+      font-weight: 700;
     }
 
     .card {
       background: --card-bg-color;
       width: 1200px;
-      height: 630px;
-      padding: 48px;
+      height: 675px;
+      padding: 40px 36px 30px;
       position: relative;
+      color: white;
     }
 
     .logo {
-      height: 38px;
-      width: 266px;
+      height: 24px;
+      width: 156px;
       display: block;
-    }
-
-    .trend {
-      /* margin-top: 108px; */
-    }
-
-    .trend__img {
-      margin-right: 20px;
-      width: 80px;
-      height: 80px;
-      border-radius: 100%;
-      overflow: hidden;
-    }
-
-    .trend__img>img {
-      width: 100%;
-    }
-
-    .trend__title {
-      font-size: 32px;
-      line-height: 100%;
-    }
-
-    .trend__badge {
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 6px 12px 8px 8px;
-      border-radius: 5px;
-      font-size: 24px;
-      line-height: 100%;
-      margin-top: 10px;
-      width: fit-content;
+      margin-right: 45px;
     }
 
     .pnl {
-      margin-top: 22px;
-      font-size: 120px;
-      line-height: 100%;
+      font-size: 72px;
+      line-height: 90%;
       font-weight: 700;
+      font-stretch: 125%;
+      color: --card-bg-color;
     }
 
     .right-img {
@@ -196,8 +185,10 @@
     .arrow {
       width: 24px;
       height: 24px;
-      margin-top: 3px;
-      margin-bottom: -3px;
+      margin-top: -4px;
+      margin-bottom: -4px;
+      margin-right: -4px;
+      margin-left: -6px;
     }
 
     .person-img {
@@ -208,65 +199,118 @@
       mix-blend-mode: multiply;
     }
 
-    .bg-img {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
+    .box {
+      background: #0F0F0F;
+      border-radius: 33px;
+      height: 100%;
+      width: fit-content;
+      padding: 30px 30px 55px;
+      min-width: 550px;
+      position: relative;
     }
 
-    .level-wrapper {
+    .box-bottom {
       margin-top: 30px;
     }
 
-    .level-title {
-      opacity: 50%;
-      color: #000000CC;
+    .wrapper {
+      width: 100%;
+      padding-top: 24px;
+      border-top: 1px solid #494949;
+    }
+
+    .wrapper+.wrapper {
+      margin-left: 24px;
+    }
+
+    .text {
       font-size: 24px;
       line-height: 100%;
     }
 
-    .level-content {
-      margin-top: 6px;
-      font-size: 28px;
-      line-height: 37.86px;
+    .text-gray {
+      color: #707070;
     }
 
-    .level-box {
-      margin-left: 125px;
+    .mt-45 {
+      margin-top: 45px;
+    }
+
+    .mt-12 {
+      margin-top: 12px;
+    }
+
+    .text-black {
+      color: #0F0F0F;
+    }
+
+    .account {
+      font-size: 30px;
+      line-height: 80%;
+    }
+
+    .avatar {
+      border: 1px solid #2A2A2A;
+      border-radius: 100%;
+      width: 64px;
+      height: 64px;
+      margin-right: 16px;
+    }
+
+    .avatar img {
+      width: 50%;
+    }
+
+    .text-semibold {
+      font-weight: 600;
+    }
+
+    .text-nowrap {
+      white-space: nowrap;
     }
   </style>
 </head>
 
 <body>
   <div class="card flex flex-col justify-between">
-    <img class="bg-img" src={bgImg} alt="">
-    <img class="right-img" src={rightImg} alt="">
-    <img class="person-img" src={personImg} alt="">
-    <img src="{logo}" class="logo" alt="">
-    <div>
-      <div class="trend flex items-center">
-        <div class="trend__img flex items-center justify-center">
-          <img src="{trendImage}" alt="">
+    <img class="person-img" src={trendImage} alt="">
+    <div class="box flex flex-col justify-between">
+      <div class="flex items-center">
+        <div class="avatar flex items-center justify-center">
+          <img src="{avatar}" alt="">
         </div>
-        <div>
-          <div class="trend__title">{trendTitle}</div>
-          <div class="trend__badge">
-            <img class="arrow" src="{arrowImage}" alt="">
-            <span>{positionInfo}</span>
+        <div class="account">{account}</div>
+      </div>
+      <div>
+        <div class="wrapper flex justify-between">
+          <div class="pnl mona-sans">{pnl}%</div>
+          <div class="text text-gray">PnL</div>
+        </div>
+        <div class="flex mt-45 text">
+          <div class="wrapper">
+            <div class="text-semibold text-nowrap">{trendTitle}</div>
+            <div class="mt-12">
+              <img class="arrow" src="{arrowImage}" alt="">
+              <span class="text-gray">{positionInfo}</span>
+            </div>
+          </div>
+          <div class="wrapper">
+            <div class="flex justify-between">
+              <div class="text-gray">Entry:</div>
+              <div class="text-semibold">{openLevel}</div>
+            </div>
+            <div class="flex justify-between mt-12 {exitLevelClass}">
+              <div class="text-gray">Exit:</div>
+              <div class="text-semibold">{exitLevel}</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="pnl">{pnl}%</div>
-      <div class="level-wrapper flex items-center">
-        <div>
-          <div class="level-title">Entry level:</div>
-          <div class="level-content">{openLevel}</div>
-        </div>
-        <div class="level-box {exitLevelClass}">
-          <div class="level-title">Exit level:</div>
-          <div class="level-content">{exitLevel}</div>
-        </div>
+    </div>
+    <div class="box-bottom flex items-end">
+      <img src="{logo}" class="logo" alt="">
+      <div class="text-upper geist-mono text-black">trade attention on <span
+          class="text-underline text-bold">Trendle.fi</span>
       </div>
     </div>
   </div>
