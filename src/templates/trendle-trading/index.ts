@@ -25,7 +25,8 @@ export type Props = {
     openLevel: string
     exitLevel: string | undefined
   }
-  pnl: number
+  pnl: string
+  isProfit: boolean
 }
 
 const template: Template<Props> = {
@@ -33,9 +34,8 @@ const template: Template<Props> = {
   height: 630,
   type: 'jpeg',
   html: async (props) => {
-    const { accountAddress, trend, pnl, position } = props
+    const { accountAddress, trend, pnl, position, isProfit } = props
 
-    const isProfit = pnl > 0
     const { bgColor } = isProfit ? cardTypes.profit : cardTypes.loss
     const { leverage, isLong, openLevel, exitLevel } = position
 
@@ -59,7 +59,7 @@ const template: Template<Props> = {
       .replace('{trendTitle}', trend.title)
       .replace('{positionInfo}', positionInfo)
       .replace('{arrowImage}', arrowImage)
-      .replace('{pnl}', pnl > 0 ? `+${pnl}` : `${pnl}`)
+      .replace('{pnl}', isProfit ? `+${pnl}` : `${pnl}`)
       .replace('{openLevel}', String(openLevel))
       .replace('{exitLevel}', String(exitLevel || ''))
       .replace('{exitLevelClass}', exitLevel ? '' : 'none')
