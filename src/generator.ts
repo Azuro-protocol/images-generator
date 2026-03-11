@@ -4,9 +4,18 @@ import { type Template } from './utils';
 
 type PuppeteerOptions = Parameters<typeof puppeteer.launch>[0];
 
+function isProtocolTimeoutError(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  return (
+    error.name === 'ProtocolError' ||
+    /protocol.*timeout|timed out/i.test(error.message)
+  );
+}
+
 interface GeneratorOptions {
   headless?: boolean;
   timeout?: number;
+  protocolTimeout?: number;
   args?: string[];
 }
 
@@ -50,6 +59,7 @@ class Generator {
     this.options = {
       headless: true,
       timeout: 30000,
+      protocolTimeout: 60000,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -59,7 +69,6 @@ class Generator {
         '--disable-web-security',
         '--disable-plugins',
         '--disable-extensions',
-        '--disable-background-networking',
         '--disable-background-timer-throttling',
         '--disable-renderer-backgrounding',
         '--disable-backgrounding-occluded-windows',
@@ -92,6 +101,7 @@ class Generator {
         devtools: false,
         args: this.options.args,
         timeout: this.options.timeout,
+        protocolTimeout: this.options.protocolTimeout ?? 60000,
       };
 
       this.browser = await puppeteer.launch(launchOptions);
@@ -109,135 +119,142 @@ class Generator {
   }
 
   async generate<P>(props: GenerateProps<P>): Promise<Uint8Array> {
-    if (!this.browser) {
-      await this.run();
-    }
+    const maxAttempts = 2;
+    let lastError: unknown;
 
-    const {
-      template,
-      props: templateProps,
-      output,
-      filename,
-      options = {},
-    } = props
-
-    const page = await this.browser!.newPage();
-
-    // Set reasonable timeout instead of infinite
-    page.setDefaultNavigationTimeout(this.options.timeout ?? 30000);
-    page.setDefaultTimeout(this.options.timeout ?? 30000);
-
-    // Optimize page performance
-    await page.setCacheEnabled(false);
-    await page.setJavaScriptEnabled(true);
-    
-    // Block unnecessary network requests for faster rendering
-    await page.setRequestInterception(true);
-    page.on('request', (req) => {
-      const resourceType = req.resourceType();
-      
-      // Block only truly unnecessary resources that don't affect rendering
-      // Allow images, stylesheets, scripts, fonts, and data URLs
-      if (['media', 'websocket', 'manifest', 'texttrack'].includes(resourceType)) {
-        req.abort();
-      }
-      else {
-        req.continue();
-      }
-    });
-
-    // Validate template
-    if (!template.width || !template.height || !template.html) {
-      throw new Error('Invalid template: missing required properties');
-    }
-
-    const {
-      width,
-      height,
-      type,
-      html: getHtml,
-    } = template;
-
-    const {
-      quality = type === 'jpeg' ? 85 : undefined, // Lower default quality for speed
-      fullPage = false,
-      waitForFonts = true, // Disable by default for speed
-      waitTimeout = 2000, // Reduced timeout
-      waitUntil = 'load',
-      skipAnimations = true, // Skip animation wait by default
-    } = options;
-
-    try {
-      // Set viewport for this generation
-      await page.setViewport({
-        width,
-        height,
-        deviceScaleFactor: 1,
-      });
-
-      // Generate HTML content
-      const htmlContent = await getHtml(templateProps);
-
-      if (!htmlContent || typeof htmlContent !== 'string') {
-        throw new Error('Template html function must return a non-empty string');
-      }
-
-      // Load content with faster wait strategy
-      await Promise.race([
-        page.setContent(htmlContent, { waitUntil }),
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Content loading timeout')), waitTimeout),
-        ),
-      ]);
-
-      // Wait for fonts to load if requested (usually not needed for base64 images)
-      if (waitForFonts) {
-        await Promise.race([
-          page.evaluate(() => document.fonts.ready),
-          new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('Font loading timeout')), waitTimeout),
-          ),
-        ]).catch(() => {
-          // Font loading timeout is not critical, continue anyway
-        });
-      }
-
-      // Skip animation wait if not needed (most templates don't need it)
-      if (!skipAnimations) {
-        await new Promise((resolve) => setTimeout(resolve, 100));
-      }
-
-      const content = fullPage ? page : await page.$('body');
-
-      if (!content) {
-        throw new Error('Failed to find content element');
-      }
-
-      const screenshotOptions: ScreenshotOptions = {
-        omitBackground: true,
-        type,
-        ...(type === 'jpeg' && quality ? { quality } : {}),
-      };
-
-      if (output && filename) {
-        if (!fs.existsSync(output)) {
-          fs.mkdirSync(output)
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        if (!this.browser) {
+          await this.run();
         }
 
-        screenshotOptions.path = `${output.replace(/\/$/, '')}/${filename.replace(/\..+$/, '')}.${type}`
+        const {
+          template,
+          props: templateProps,
+          output,
+          filename,
+          options = {},
+        } = props;
+
+        // Validate template
+        if (!template.width || !template.height || !template.html) {
+          throw new Error('Invalid template: missing required properties');
+        }
+
+        const {
+          width,
+          height,
+          type,
+          html: getHtml,
+        } = template;
+
+        const {
+          quality = type === 'jpeg' ? 85 : undefined,
+          fullPage = false,
+          waitForFonts = true,
+          waitTimeout = 2000,
+          waitUntil = 'load',
+          skipAnimations = true,
+        } = options;
+
+        const page = await this.browser!.newPage();
+
+        // Set reasonable timeout instead of infinite
+        page.setDefaultNavigationTimeout(this.options.timeout ?? 30000);
+        page.setDefaultTimeout(this.options.timeout ?? 30000);
+
+        // Optimize page performance
+        await page.setCacheEnabled(false);
+        await page.setJavaScriptEnabled(true);
+
+        // Block unnecessary network requests for faster rendering
+        await page.setRequestInterception(true);
+        page.on('request', (req) => {
+          const resourceType = req.resourceType();
+          if (['media', 'websocket', 'manifest', 'texttrack'].includes(resourceType)) {
+            req.abort();
+          } else {
+            req.continue();
+          }
+        });
+
+        try {
+          // Set viewport for this generation
+          await page.setViewport({
+            width,
+            height,
+            deviceScaleFactor: 1,
+          });
+
+          // Generate HTML content
+          const htmlContent = await getHtml(templateProps);
+
+          if (!htmlContent || typeof htmlContent !== 'string') {
+            throw new Error('Template html function must return a non-empty string');
+          }
+
+          // Load content with faster wait strategy
+          await Promise.race([
+            page.setContent(htmlContent, { waitUntil }),
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('Content loading timeout')), waitTimeout),
+            ),
+          ]);
+
+          // Wait for fonts to load if requested
+          if (waitForFonts) {
+            await Promise.race([
+              page.evaluate(() => document.fonts.ready),
+              new Promise((_, reject) =>
+                setTimeout(() => reject(new Error('Font loading timeout')), waitTimeout),
+              ),
+            ]).catch(() => {});
+          }
+
+          if (!skipAnimations) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+          }
+
+          const content = fullPage ? page : await page.$('body');
+
+          if (!content) {
+            throw new Error('Failed to find content element');
+          }
+
+          const screenshotOptions: ScreenshotOptions = {
+            omitBackground: true,
+            type,
+            ...(type === 'jpeg' && quality ? { quality } : {}),
+          };
+
+          if (output && filename) {
+            if (!fs.existsSync(output)) {
+              fs.mkdirSync(output);
+            }
+            screenshotOptions.path = `${output.replace(/\/$/, '')}/${filename.replace(/\..+$/, '')}.${type}`;
+          }
+
+          const imageBuffer = await content.screenshot(screenshotOptions);
+          await page.close();
+          
+          return imageBuffer;
+        } catch (innerError) {
+          await page.close().catch(() => {});
+          throw innerError;
+        }
+      } catch (error) {
+        lastError = error;
+        if (attempt < maxAttempts && isProtocolTimeoutError(error)) {
+          await this.cleanup();
+          continue;
+        }
+        break;
       }
-
-      const imageBuffer = await content.screenshot(screenshotOptions);
-
-      await page.close();
-
-      return imageBuffer;
     }
-    catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Unknown error occurred';
-      throw new Error(`Failed to generate image: ${errorMessage}`);
-    }
+
+    const errorMessage =
+      lastError instanceof Error ? lastError.message : 'Unknown error occurred';
+    throw new Error(`Failed to generate image: ${errorMessage}`);
   }
 
   async shutdown(): Promise<void> {
