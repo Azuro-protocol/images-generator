@@ -183,7 +183,7 @@ class Generator {
           await page.setViewport({
             width,
             height,
-            deviceScaleFactor: 1,
+            deviceScaleFactor: props.template?.scaleFactor || 1,
           });
 
           // Generate HTML content
@@ -236,7 +236,7 @@ class Generator {
 
           const imageBuffer = await content.screenshot(screenshotOptions);
           await page.close();
-          
+
           return imageBuffer;
         } catch (innerError) {
           await page.close().catch(() => {});
